@@ -10,6 +10,7 @@ export function LandingPage(props){
             <h2>Welcome</h2>
             <LoginForm />
             <Link to="/">Login</Link>
+            <Link to="/signup">Sign Up</Link>
         </div>
     );
 } 
