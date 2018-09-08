@@ -1,27 +1,26 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import requiresLogin from './requires-login';
 
 export class Dashboard extends React.Component{
-	checkLogin(){
-		console.log("checking login");
-		if(this.props.loggedIn === false){
-			console.log("user not logged in")
-			return <Redirect to="/signup"/>;
-		}
-	}
+
 	render(){
-		this.checkLogin();
+		
 	return (
         <div className="home">
-            <h2>Welcome to the dashboard</h2>
+            <h2>Welcome to the dashboard {this.props.username}</h2>
         </div>
     );
 	}
 }
 
-const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
-});
+const mapStateToProps = state => {
+    const {currentUser} = state.auth;
+    return {
+        username: state.auth.currentUser.username,
+        name: `${currentUser.firstName} ${currentUser.lastName}`,
+        protectedData: state.protectedData.data
+    };
+};
 
-export default connect(mapStateToProps)(Dashboard);
+export default requiresLogin()(connect(mapStateToProps)(Dashboard));
