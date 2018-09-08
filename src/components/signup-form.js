@@ -1,13 +1,20 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import Input from './input';
+import {registerUser} from '../actions/users';
+import {login} from '../actions/auth';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validator';
 const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
 export class RegistrationForm extends React.Component{
 	//handle submit
 	onSubmit(values){
-		console.log(values);
+		const {username, password} = values;
+        const user = {username, password};
+        console.log(user);
+        return this.props
+            .dispatch(registerUser(user))
+            .then(() => this.props.dispatch(login(username, password)));
 	}
 
 	render(){

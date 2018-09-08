@@ -5,6 +5,9 @@ import {Link, Redirect} from 'react-router-dom';
 import RegistrationForm from './signup-form';
 
 export function SignUpPage(props) {
+	if (props.loggedIn) {
+        return <Redirect to="/dashboard" />;
+    }
     return (
         <div className="home">
             <h2>Sign Up</h2>
