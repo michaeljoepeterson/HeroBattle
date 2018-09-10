@@ -1,13 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
-
+import Navbar from './navComponent';
 export class Dashboard extends React.Component{
 
 	render(){
 		
 	return (
         <div className="home">
+            <Navbar />
             <h2>Welcome to the dashboard {this.props.username}</h2>
         </div>
     );
