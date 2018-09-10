@@ -2,22 +2,25 @@ import React from 'react';
 import {connect} from 'react-redux';
 import ResponsiveMenu from 'react-responsive-navbar';
 import './navStyles.css';
+import Icon from 'react-icons-kit';
+import {thinDown} from 'react-icons-kit/entypo/thinDown'
+import {thinUp} from 'react-icons-kit/entypo/thinUp'
 
 export class Navbar extends React.Component{
 	render(){
 		return(
 		<ResponsiveMenu
-        menuOpenButton={<div>O</div>}
-        menuCloseButton={<div>X</div>}
+        menuOpenButton={<div className=""><Icon icon={thinDown}/></div>}
+        menuCloseButton={<div className="navButton"><Icon icon={thinUp}/></div>}
         changeMenuOn="500px"
-        largeMenuClassName="large-menu-classname"
+        largeMenuClassName="largeMenu"
         smallMenuClassName="small-menu-classname"
         menu={
           <ul>
-            <li className="navItem">Item 5</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+            <li className="navHeader"><a className="navHeadLink" href="#">Item 1</a></li>
+            <li ><a className="navItem" href="#">Item 2</a></li>
+            <li><a className="navItem" href="#">Item 3</a></li>
+            <li><a className="navItem" href="#">Item 4</a></li>
           </ul>
         }/>
         );
