@@ -5,6 +5,7 @@ import './navStyles.css';
 import Icon from 'react-icons-kit';
 import {thinDown} from 'react-icons-kit/entypo/thinDown'
 import {thinUp} from 'react-icons-kit/entypo/thinUp'
+import {Link} from 'react-router-dom';
 
 export class Navbar extends React.Component{
 	render(){
@@ -17,10 +18,10 @@ export class Navbar extends React.Component{
         smallMenuClassName="small-menu-classname"
         menu={
           <ul>
-            <li className="navHeader"><a className="navHeadLink" href="#">Item 1</a></li>
-            <li ><a className="navItem" href="#">Item 2</a></li>
-            <li><a className="navItem" href="#">Item 3</a></li>
-            <li><a className="navItem" href="#">Item 4</a></li>
+            <li className="navHeader"><Link to="/" className="navHeadLink">Item 1</Link></li>
+            <li ><Link className="navItem" to="/">Item 2</Link></li>
+            <li><Link className="navItem" to="/">Item 3</Link></li>
+            <li><Link className="navItem" to="/">Item 4</Link></li>
           </ul>
         }/>
         );
