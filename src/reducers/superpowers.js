@@ -14,7 +14,8 @@ export default function reducer(state = initialState,action){
 	if(action.type === GET_POWERS_REQUEST){
 		console.log("get powers request");
 		return Object.assign({}, state, {
-            loading: true
+            loading: true,
+            error:null
         });
 	}
 
@@ -22,10 +23,12 @@ export default function reducer(state = initialState,action){
 		console.log("action powers", action.powers);
 		return Object.assign({}, state, {
 			loading:false,
-            powers: action.powers
+            powers: action.powers,
+            error:null
         });
 	}
 	else if(action.type === GET_POWERS_ERROR){
+		console.log("super power error");
 		return Object.assign({}, state, {
 			loading:false,
             error: action.error
