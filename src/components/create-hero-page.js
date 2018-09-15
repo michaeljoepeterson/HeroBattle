@@ -6,7 +6,7 @@ import CreateHeroForm from './create-hero-form';
 import Navbar from './navComponent';
 export class CreateHeroPage extends React.Component{
 
-	 componentDidMount() {
+	componentDidMount() {
         this.props.dispatch(getPowers());
     }
 
