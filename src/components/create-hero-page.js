@@ -7,19 +7,12 @@ import Navbar from './navComponent';
 export class CreateHeroPage extends React.Component{
 
 	 componentDidMount() {
-        this.props.dispatch(getPowers())
-        .then(() =>{  
-        console.log	("inside the then");
-			for(let i = 0;i<this.props.data;i++){
-			this.props.powerNames.push(this.props.data[i].powerName);
-			}
-        })
-        
+        this.props.dispatch(getPowers());
     }
 
 	render(){
 		console.log("props data in component ",this.props.data);
-		console.log("props data in component ",this.props.powerNames);
+		console.log("props powernames in component ",this.props.powerNames);
 		return(
 			<div>
 				<Navbar />
@@ -34,8 +27,8 @@ export class CreateHeroPage extends React.Component{
 
 const mapStateToProps = state => ({
     data: state.superpowers.powers, 
-    availablePoints: 50,
-    powerNames:[]
+    powerNames: state.superpowers.powerNames,
+    availablePoints: 50
 });
 
 export default requiresLogin()(connect(mapStateToProps)(CreateHeroPage));

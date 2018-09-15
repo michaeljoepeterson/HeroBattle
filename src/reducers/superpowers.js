@@ -7,7 +7,8 @@ import {
 const initialState = {
 	loading: false,
 	powers:null,
-	error: null
+	error: null,
+	powerNames:null
 };
 
 export default function reducer(state = initialState,action){
@@ -21,9 +22,15 @@ export default function reducer(state = initialState,action){
 
 	else if(action.type === GET_POWERS_SUCCESS){
 		console.log("action powers", action.powers);
+		let powerNamesArr = []
+		for(let i =0;i < action.powers;i++){
+			console.log("reducer for loop");
+			powerNamesArr.push(action.powers[i].powerNames);
+		}
 		return Object.assign({}, state, {
 			loading:false,
             powers: action.powers,
+            powerNames:powerNamesArr,
             error:null
         });
 	}
