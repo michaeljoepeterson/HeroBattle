@@ -16,6 +16,7 @@ export class CreateHeroForm extends React.Component{
 	render(){
 		console.log("form powers" ,this.props.powers);
 		console.log("form powers names" ,this.props.powerNames);
+		//const superpowersData = this.props.powerNames.map(name =>(<option value={name} key={name}>{name}</option>));
 		return(
 			<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				<label htmlFor="heroName">Hero Name:</label>
@@ -67,7 +68,7 @@ export class CreateHeroForm extends React.Component{
 					name="heroSuperpowers"
 					validate={[required,nonEmpty]}>
 					<option value="">Select a power</option>
-			
+						
 				</Field>
 			</form>
 		);

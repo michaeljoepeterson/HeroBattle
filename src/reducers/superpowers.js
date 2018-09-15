@@ -22,11 +22,12 @@ export default function reducer(state = initialState,action){
 
 	else if(action.type === GET_POWERS_SUCCESS){
 		console.log("action powers", action.powers);
-		let powerNamesArr = []
-		for(let i =0;i < action.powers;i++){
-			console.log("reducer for loop");
-			powerNamesArr.push(action.powers[i].powerNames);
+		let powerNamesArr = [];
+		for(let i =0;i < action.powers.length;i++){
+			//console.log("reducer for loop",action.powers[i].powerName);
+			powerNamesArr.push(action.powers[i].powerName);
 		}
+		//console.log("powers name arr in action",powerNamesArr);
 		return Object.assign({}, state, {
 			loading:false,
             powers: action.powers,
