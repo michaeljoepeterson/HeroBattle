@@ -15,16 +15,39 @@ export const getPowersSuccess = powers => {
 }
 
 export const GET_POWERS_ERROR = "GET_POWERS_ERROR";
-export const getPowersSuccess = error => {
+export const getPowersError = error => {
 	type:GET_POWERS_ERROR,
 	error
 }
 
-export const getPowers = () => dispatch => {
+export const getPowers = () => (dispatch , getState) => {
 	dispatch(getPowersRequest);
-	return(
-		fetch(`${API_BASE_URL}/api/superpower`, {
-			
+	const authToken = getState().auth.authToken;
+	return fetch(`${API_BASE_URL}/superpower`, {
+			method:"GET",
+			headers: {
+            
+            Authorization: `Bearer ${authToken}`
+        	}
 		})
-	);
+		.then(
+			res => {
+				return normalizeResponseErrors(res)
+				
+			}
+		)
+		.then(res => {
+			//console.log(res);
+			return res.json()
+		})
+		.then(data => {
+			console.log("Before dispatch");
+			console.log(data);
+			dispatch(getPowersSuccess(data))
+		})
+			
+		.catch(err => {
+			//dispatch(getPowersError(err));
+		});
+	
 }

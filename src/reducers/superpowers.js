@@ -12,12 +12,14 @@ const initialState = {
 
 export default function reducer(state = initialState,action){
 	if(action.type === GET_POWERS_REQUEST){
+		console.log("get powers request");
 		return Object.assign({}, state, {
             loading: true
         });
 	}
 
 	else if(action.type === GET_POWERS_SUCCESS){
+		console.log("action powers", action.powers);
 		return Object.assign({}, state, {
 			loading:false,
             powers: action.powers
@@ -29,4 +31,5 @@ export default function reducer(state = initialState,action){
             error: action.error
         });
 	}
+	return state;
 }

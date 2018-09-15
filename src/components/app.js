@@ -6,7 +6,7 @@ import LoginForm from './login-form';
 import LandingPage from './landing-page';
 import SignUpPage from './signup-page';
 import Dashboard from './dashboard';
-
+import CreateHeroPage from './create-hero-page';
 export class App extends React.Component {
     render() {
         return (
@@ -14,6 +14,7 @@ export class App extends React.Component {
                 <Route exact path="/" component={LandingPage} />
             <Route exact path="/signup" component={SignUpPage} />
             <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/createhero" component={CreateHeroPage} />
             </div>
         );
     }
