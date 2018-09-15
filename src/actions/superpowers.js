@@ -42,7 +42,6 @@ export const getPowers = () => (dispatch , getState) => {
 		})
 		.then(data => {
 			dispatch(getPowersSuccess(data));
-	
 		})
 			
 		.catch(err => {
