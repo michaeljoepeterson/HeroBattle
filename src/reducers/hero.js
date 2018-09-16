@@ -27,7 +27,15 @@ const initialState = {
 export default function reducer(state = initialState,action){
 	if(action.type === INITIALIZE_PAGE){
 		console.log("hero reducer called",state);
-		return state;
+		return Object.assign({}, state, {
+			currenthero:{heroHealth:"100",
+		heroAbilityPoints:"100",
+		heroStrength:"50",
+		heroToughness:"50",
+		heroAgility:"50",
+		heroSuperAbility:"50",
+		availablePoints:"50"}
+        })
 	}
 	else if(action.type === UPDATE_POINTS){
 		/*
