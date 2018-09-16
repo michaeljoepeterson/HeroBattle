@@ -9,7 +9,8 @@ const initialState = {
 		heroStrength:"50",
 		heroToughness:"50",
 		heroAgility:"50",
-		heroSuperAbility:"50"
+		heroSuperAbility:"50",
+		availablePoints:"50"
 	}
 };
 
