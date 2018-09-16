@@ -11,51 +11,60 @@ export class CreateHeroForm extends React.Component{
 	componentDidMount() {
 		this.props.dispatch(getPowers());
         this.props.dispatch(initPage());
-       	//console.log("default vals from state", this.props.defaultVals);
+
     }
 
 
 	onSubmit(values) {
-		//submit the hero data to the hero endpoint
-		//create new action that will post data
 		console.log("dispatch submit action",values);
 	}
 
-	oneHundredNormalizer(value){
+	oneHundredNormalizer(key,value){
 		console.log("value in normalizer", value);
-		if(value < 100){
-			return "100"
+		console.log(this.props.availablePoints);
+		if(this.props.availablePoints == 0){			
+			return String(this.props.currentHero[key])
+		}
+		else if(value < 100){
+			return "100";
 		}
 		else if (value > 150){
-			return "150"
+			return "150";
 		}
 		else{
-			return value
+			
+			return value;
 		}
 	}
 
-	fiftyNormalizer(value){
+	fiftyNormalizer(key,value){
 		console.log("value in normalizer", value);
-		if(value < 50){
-			return "50"
+		if(this.props.availablePoints == 0){
+			return String(this.props.currentHero[key])
+		}
+
+		else if(value < 50){
+			return "50";
 		}
 		else if (value > 100){
-			return "100"
+			return "100";
 		}
 		else{
-			return value
+			return value;
 		}
 	}
 
 	updatePoints(value){
-		console.log("value from on change" ,value.currentTarget.name);
-		console.log("current hero in props" ,this.props.currentHero);
+
+		console.log("current hero in props" ,JSON.stringify(this.props.currentHero,null,2));
+
 		let val = parseInt(value.target.value);
 		const defaultValue = value.target.defaultValue;
 		const currentStat = value.currentTarget.name;
 		let newHeroStats = Object.assign({},this.props.currentHero);
-		//console.log("after copy", newHeroStats);
-		//console.log("after copy points",newHeroStats["availablePoints"]);
+
+		console.log("after copy", JSON.stringify(newHeroStats,null,2));
+		console.log("after copy points",newHeroStats["availablePoints"]);
 		if (val === 99 && defaultValue === "100"){
 			val = 100;
 		}
@@ -80,14 +89,12 @@ export class CreateHeroForm extends React.Component{
 		*/
 		newHeroStats[currentStat] = String(val);
 		console.log("props avail points", this.props.availablePoints);
-		//newHeroStats["availablePoints"] = this.props.availablePoints;
 		console.log("before dispatch stats", newHeroStats);
 		this.props.dispatch(updatePointsAction(newHeroStats,this.props.availablePoints));
 	}
 
 	render(){
-		//console.log("form powers" ,this.props.powers);
-		//console.log("form powers names" ,this.props.powerNames);
+
 		let superpowersData = []
 		try{
 			superpowersData = this.props.powerNames.map(name =>(<option value={name} key={name}>{name}</option>));
@@ -111,7 +118,7 @@ export class CreateHeroForm extends React.Component{
 					component={Input}
 					type="number"
 					name="heroHealth"
-					normalize={this.oneHundredNormalizer}
+					normalize={this.oneHundredNormalizer.bind(this,"heroHealth")}
 					onChange={e => this.updatePoints(e)}
 					validate={[required,nonEmpty]}/>
 				<label htmlFor="heroAbilityPoints">Hero Ability Points:</label>
@@ -119,7 +126,7 @@ export class CreateHeroForm extends React.Component{
 					component={Input}
 					type="number"
 					name="heroAbilityPoints"
-					normalize={this.oneHundredNormalizer}
+					normalize={this.oneHundredNormalizer.bind(this,"heroAbilityPoints")}
 					onChange={e => this.updatePoints(e)}
 					validate={[required,nonEmpty]}/>
 				<label htmlFor="heroStrength">Hero Strength:</label>
@@ -127,7 +134,7 @@ export class CreateHeroForm extends React.Component{
 					component={Input}
 					type="number"
 					name="heroStrength"
-					normalize={this.fiftyNormalizer}
+					normalize={this.fiftyNormalizer.bind(this,"heroStrength")}
 					onChange={e => this.updatePoints(e)}
 					validate={[required,nonEmpty]}/>
 				<label htmlFor="heroToughness">Hero Toughness:</label>
@@ -135,7 +142,7 @@ export class CreateHeroForm extends React.Component{
 					component={Input}
 					type="number"
 					name="heroToughness"
-					normalize={this.fiftyNormalizer}
+					normalize={this.fiftyNormalizer.bind(this,"heroToughness")}
 					onChange={e => this.updatePoints(e)}
 					validate={[required,nonEmpty]}/>
 				<label htmlFor="heroAgility">Hero Agility:</label>
@@ -143,7 +150,7 @@ export class CreateHeroForm extends React.Component{
 					component={Input}
 					type="number"
 					name="heroAgility"
-					normalize={this.fiftyNormalizer}
+					normalize={this.fiftyNormalizer.bind(this,"heroAgility")}
 					onChange={e => this.updatePoints(e)}
 					validate={[required,nonEmpty]}/>
 				<label htmlFor="heroSuperAbility">Hero Intelligence:</label>
@@ -151,7 +158,7 @@ export class CreateHeroForm extends React.Component{
 					component={Input}
 					type="number"
 					name="heroSuperAbility"
-					normalize={this.fiftyNormalizer}
+					normalize={this.fiftyNormalizer.bind(this,"heroSuperAbility")}
 					onChange={e => this.updatePoints(e)}
 					validate={[required,nonEmpty]}/>
 
@@ -191,7 +198,6 @@ export class CreateHeroForm extends React.Component{
 }
 
 const mapStateToProps = state => ({
-    defaultVals: state.hero.init,
     currentHero: state.hero.currenthero,
     powers: state.superpowers.powers, 
     powerNames: state.superpowers.powerNames,

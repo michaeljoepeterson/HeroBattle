@@ -4,15 +4,7 @@ import {
 } from '../actions/hero';
 
 const initialState = {
-	init:{
-		heroHealth:"100",
-		heroAbilityPoints:"100",
-		heroStrength:"50",
-		heroToughness:"50",
-		heroAgility:"50",
-		heroSuperAbility:"50",
-		availablePoints:"50"
-	},
+
 	currenthero:{
 		heroHealth:"100",
 		heroAbilityPoints:"100",
@@ -50,20 +42,29 @@ export default function reducer(state = initialState,action){
 		const newPoints = action.currentPoints - difference;
 		console.log("newpoints in hero reducer",newPoints);
 		*/
-		let newHeroStats = action.currentHero;
+		//rest operator
+		let newHeroStats = {...action.currentHero};
 		console.log("hero stats in reducer before update points ",newHeroStats)
 		let sum = 0;
 		for (let key in newHeroStats){
 			if(key !== "availablePoints"){
-				console.log("hero stats in loop reducer",newHeroStats[key])
+				//console.log("hero stats in loop reducer",newHeroStats[key])
 				sum += parseInt(newHeroStats[key]);
-				console.log("the sum in loop", sum);
+				//console.log("the sum in loop", sum);
 			}
 		}
-		console.log("the sum is ", sum);
-		const newAvailablePoints = String(450 - sum);
+		//console.log("the sum is ", sum);
+		let newAvailablePoints = String(450 - sum);
+		if(newAvailablePoints < 0){
+			
+			return state;
+		}
+		else if (newAvailablePoints > 50){
+			newAvailablePoints = 50;
+		}
+		//else if()
 		newHeroStats.availablePoints = newAvailablePoints;
-		console.log("new hero stats", newHeroStats);
+		console.log("new hero stats from reducer", newHeroStats);
 		return Object.assign({}, state, {
 			currenthero:newHeroStats
         });
