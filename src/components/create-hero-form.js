@@ -1,9 +1,9 @@
 import React from 'react';
-import {Field, reduxForm, focus,getFormValues} from 'redux-form';
+import {Field, reduxForm, focus} from 'redux-form';
 import {connect} from 'react-redux';
 import {required,nonEmpty,isTrimmed} from '../validator';
 import Input from './input';
-import {initPage,updatePointsAction} from "../actions/hero";
+import {initPage,updatePointsAction,createHero} from "../actions/hero";
 import {getPowers} from '../actions/superpowers';
 
 export class CreateHeroForm extends React.Component{
@@ -16,10 +16,11 @@ export class CreateHeroForm extends React.Component{
 
 	onSubmit(values) {
 		console.log("dispatch submit action",values);
-
+		this.props.dispatch(createHero(values));
 	}
 
-	resetValues(){
+	resetValues(event){
+		event.preventDefault();
 		this.props.change("heroHealth","100");
 		this.props.change("heroAbilityPoints","100");
 		this.props.change("heroStrength","50");
@@ -30,10 +31,10 @@ export class CreateHeroForm extends React.Component{
 	}
 
 	oneHundredNormalizer(key,value){
-		console.log("value in normalizer", value);
+		//console.log("value in normalizer", value);
 		this.props.dispatch(updatePointsAction(key,value));
-		console.log(this.props.availablePoints);
-		console.log("normalizer hero",this.props.currentHero);
+		//console.log(this.props.availablePoints);
+		//console.log("normalizer hero",this.props.currentHero);
 
 		if(this.props.availablePoints == 0){
 			return String(this.props.currentHero[key])
@@ -51,7 +52,7 @@ export class CreateHeroForm extends React.Component{
 	}
 
 	fiftyNormalizer(key,value){
-		console.log("value in normalizer", value);
+		//console.log("value in normalizer", value);
 		this.props.dispatch(updatePointsAction(key,value));
 		if(this.props.availablePoints == 0){
 			return String(this.props.currentHero[key])
@@ -199,7 +200,7 @@ export class CreateHeroForm extends React.Component{
                     disabled={this.props.pristine || this.props.submitting}>
                     Sign Up
                 </button>
-                <button onClick={() => this.resetValues()}
+                <button onClick={(e) => this.resetValues(e)}
                     >
                     Reset
                 </button>
