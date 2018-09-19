@@ -71,9 +71,17 @@ export const createHero = (heroData) => (dispatch , getState) => {
 		.then(data => dispatch(createHeroSuccess()))
 		.catch(err => {
 			dispatch(createHeroError(err));
+			console.log("submit error",err);
+			let message = "an error occured";
+			if(err.reason && err.reason === "ValidationError"){
+				message = err.message;
+			}
+
+
+
 			return Promise.reject(
                     new SubmissionError({
-                        _error: "an error occured"
+                        _error: message
                     })
                 );
 		})

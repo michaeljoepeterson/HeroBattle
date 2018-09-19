@@ -16,7 +16,7 @@ export class CreateHeroForm extends React.Component{
 
 	onSubmit(values) {
 		console.log("dispatch submit action",values);
-		this.props.dispatch(createHero(values));
+		return this.props.dispatch(createHero(values));
 	}
 
 	resetValues(event){
@@ -109,6 +109,14 @@ export class CreateHeroForm extends React.Component{
 	}
 
 	render(){
+		let error;
+			if (this.props.error) {
+	            error = (
+	                <div className="form-error" aria-live="polite">
+	                    {this.props.error}
+	                </div>
+	            );
+	        }
 
 		let superpowersData = []
 		try{
@@ -119,9 +127,10 @@ export class CreateHeroForm extends React.Component{
 		}
 		
 		return(
-		
+			
 			<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				<h1>available Points {this.props.availablePoints}</h1>
+				{error}
 				<label htmlFor="heroName">Hero Name:</label>
 				<Field
 					component={Input}
@@ -230,5 +239,5 @@ export default reduxForm({
 		heroSuperAbility:"50"
     },
     onSubmitFail: (errors, dispatch) =>
-        dispatch(focus('hero', Object.keys(errors)[0]))
+        dispatch(focus('hero','heroName'))
 })(CreateHeroForm);
