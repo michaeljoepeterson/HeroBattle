@@ -18,10 +18,10 @@ export class Navbar extends React.Component{
         smallMenuClassName="small-menu-classname"
         menu={
           <ul>
-            <li className="navHeader"><Link to="/createhero" className="navHeadLink">Create Hero</Link></li>
-            <li ><Link className="navItem" to="/">Item 2</Link></li>
-            <li><Link className="navItem" to="/">Item 3</Link></li>
-            <li><Link className="navItem" to="/">Item 4</Link></li>
+            <li className="navHeader"><Link to="/" className="navHeadLink">Battle!</Link></li>
+            <li ><Link className="navItem"  to="/createhero">Create Hero</Link></li>
+            <li><Link className="navItem" to="/">Create Superpower</Link></li>
+            <li><Link className="navItem" to="/">Logout</Link></li>
           </ul>
         }/>
         );

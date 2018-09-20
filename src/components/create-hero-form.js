@@ -3,6 +3,7 @@ import {Field, reduxForm, focus} from 'redux-form';
 import {connect} from 'react-redux';
 import {required,nonEmpty,isTrimmed} from '../validator';
 import Input from './input';
+import Select from './select';
 import {initPage,updatePointsAction,createHero} from "../actions/hero";
 import {getPowers} from '../actions/superpowers';
 
@@ -27,6 +28,10 @@ export class CreateHeroForm extends React.Component{
 		this.props.change("heroToughness","50");
 		this.props.change("heroSuperAbility","50");
 		this.props.change("heroAgility","50");
+		this.props.change("heroName","");
+		this.props.change("heroSuperpower1","");
+		this.props.change("heroSuperpower2","");
+		this.props.change("heroSuperpower3","");
 		this.props.dispatch(initPage());
 	}
 
@@ -182,27 +187,25 @@ export class CreateHeroForm extends React.Component{
 
 				<label htmlFor="heroSuperpower1">Hero Super Power 1:</label>
 				<Field
-					component="select"
+					component={Select}
 					name="heroSuperpower1"
+					options={superpowersData}
 					validate={[required,nonEmpty]}>
-					<option value="">Select a power</option>
-						{superpowersData}
+					
 				</Field>
 				<label htmlFor="heroSuperpower2">Hero Super Power 2:</label>
 				<Field
-					component="select"
+					component={Select}
 					name="heroSuperpower2"
+					options={superpowersData}
 					validate={[required,nonEmpty]}>
-					<option value="">Select a power</option>
-						{superpowersData}
 				</Field>
 				<label htmlFor="heroSuperpower3">Hero Super Power 3:</label>
 				<Field
-					component="select"
+					component={Select}
 					name="heroSuperpower3"
 					validate={[required,nonEmpty]}>
-					<option value="">Select a power</option>
-						{superpowersData}
+					options={superpowersData}
 				</Field>
 				<button
                     type="submit"

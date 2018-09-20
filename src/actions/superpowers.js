@@ -20,6 +20,13 @@ export const getPowersError = error => ({
 	error
 });
 
+export const UPDATE_POINTS = "UPDATE_POINTS";
+export const updatePointsAction = (currentStat,currentVal) => ({
+	type:UPDATE_POINTS,
+	currentStat,
+	currentVal
+});
+
 export const getPowers = () => (dispatch , getState) => {
 	dispatch(getPowersRequest());
 	const authToken = getState().auth.authToken;
