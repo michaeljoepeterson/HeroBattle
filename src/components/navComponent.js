@@ -20,7 +20,7 @@ export class Navbar extends React.Component{
           <ul>
             <li className="navHeader"><Link to="/" className="navHeadLink">Battle!</Link></li>
             <li ><Link className="navItem"  to="/createhero">Create Hero</Link></li>
-            <li><Link className="navItem" to="/">Create Superpower</Link></li>
+            <li><Link className="navItem" to="/createpower">Create Superpower</Link></li>
             <li><Link className="navItem" to="/">Logout</Link></li>
           </ul>
         }/>

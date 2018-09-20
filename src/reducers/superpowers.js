@@ -8,7 +8,13 @@ const initialState = {
 	loading: false,
 	powers:null,
 	error: null,
-	powerNames:null
+	powerNames:null,
+	currentPower:{
+		availablePoints: "100",
+		powerAttack:"0",
+		powerDefense:"0",
+		powerSpecialAttack:"0",
+	}
 };
 
 export default function reducer(state = initialState,action){

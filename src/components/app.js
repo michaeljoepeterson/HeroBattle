@@ -7,6 +7,7 @@ import LandingPage from './landing-page';
 import SignUpPage from './signup-page';
 import Dashboard from './dashboard';
 import CreateHeroPage from './create-hero-page';
+import CreatePowerPage from './create-superpower-page';
 export class App extends React.Component {
     render() {
         return (
@@ -15,6 +16,7 @@ export class App extends React.Component {
             <Route exact path="/signup" component={SignUpPage} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/createhero" component={CreateHeroPage} />
+            <Route exact path="/createpower" component={CreatePowerPage} />
             </div>
         );
     }

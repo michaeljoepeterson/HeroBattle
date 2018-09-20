@@ -18,7 +18,7 @@ const initialState = {
 		heroAgility:"50",
 		heroSuperAbility:"50",
 		availablePoints:"50"
-	},
+	}
 
 };
 

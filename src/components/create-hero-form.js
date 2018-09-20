@@ -74,45 +74,6 @@ export class CreateHeroForm extends React.Component{
 		}
 	}
 
-	updatePoints(value){
-
-		console.log("current hero in props" ,JSON.stringify(this.props.currentHero,null,2));
-
-		let val = parseInt(value.target.value);
-		const defaultValue = value.target.defaultValue;
-		const currentStat = value.currentTarget.name;
-		let newHeroStats = Object.assign({},this.props.currentHero);
-
-		console.log("after copy", JSON.stringify(newHeroStats,null,2));
-		console.log("after copy points",newHeroStats["availablePoints"]);
-		if (val === 99 && defaultValue === "100"){
-			val = 100;
-		}
-		else if(val === 151 && defaultValue === "100"){
-			val = 150;
-		}
-		else if(val === 49 && defaultValue === "50"){
-			val = 50;
-		}
-		else if(val === 101 && defaultValue === "50"){
-			val = 100;
-		}
-		//console.log("adjusted val from on change",val,defaultValue);
-		/*
-		for (let key in newHeroStats){
-			console.log("key",key,newHeroStats[key]);
-			if(key === currentStat){
-				console.log("found the stat");
-				newHeroStats[key] = String(val);
-			}
-		}
-		*/
-		newHeroStats[currentStat] = String(val);
-		console.log("props avail points", this.props.availablePoints);
-		console.log("before dispatch stats", newHeroStats);
-		this.props.dispatch(updatePointsAction(newHeroStats,this.props.availablePoints));
-	}
-
 	render(){
 		let error;
 			if (this.props.error) {
@@ -204,8 +165,9 @@ export class CreateHeroForm extends React.Component{
 				<Field
 					component={Select}
 					name="heroSuperpower3"
-					validate={[required,nonEmpty]}>
 					options={superpowersData}
+					validate={[required,nonEmpty]}>
+					
 				</Field>
 				<button
                     type="submit"
