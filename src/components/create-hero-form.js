@@ -172,7 +172,7 @@ export class CreateHeroForm extends React.Component{
 				<button
                     type="submit"
                     disabled={this.props.pristine || this.props.submitting}>
-                    Sign Up
+                    Submit
                 </button>
                 <button onClick={(e) => this.resetValues(e)}
                     >

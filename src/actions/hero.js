@@ -77,8 +77,6 @@ export const createHero = (heroData) => (dispatch , getState) => {
 				message = err.message;
 			}
 
-
-
 			return Promise.reject(
                     new SubmissionError({
                         _error: message
