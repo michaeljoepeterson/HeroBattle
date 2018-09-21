@@ -13,7 +13,7 @@ export class CreatePowerForm extends React.Component{
 
 	onSubmit(values){
 		console.log("dispatch values",values);
-		this.props.dispatch(createPower(values));
+		return this.props.dispatch(createPower(values));
 	}
 
 	resetValues(event){

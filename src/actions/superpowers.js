@@ -109,9 +109,13 @@ export const createPower = (powerData) => (dispatch , getState) => {
 		.then(res => dispatch(createPowerSuccess()))
 		.catch(err=>{
 			dispatch(createPowerError(err));
+			let message = "an error occured";
+			if(err.reason && err.reason === "ValidationError"){
+				message = err.message;
+			}
 			return Promise.reject(
                     new SubmissionError({
-                        _error: "an error"
+                        _error: message
                     })
                 );
 		})
