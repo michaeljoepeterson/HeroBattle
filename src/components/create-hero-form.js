@@ -41,7 +41,7 @@ export class CreateHeroForm extends React.Component{
 		//console.log(this.props.availablePoints);
 		//console.log("normalizer hero",this.props.currentHero);
 
-		if(this.props.availablePoints == 0){
+		if(parseInt(this.props.availablePoints,10) === 0){
 			return String(this.props.currentHero[key])
 		}
 
@@ -54,7 +54,7 @@ export class CreateHeroForm extends React.Component{
 	fiftyNormalizer(key,value){
 		//console.log("value in normalizer", value);
 		this.props.dispatch(updatePointsAction(key,value));
-		if(this.props.availablePoints == 0){
+		if(parseInt(this.props.availablePoints,10) === 0){
 			return String(this.props.currentHero[key])
 		}
 

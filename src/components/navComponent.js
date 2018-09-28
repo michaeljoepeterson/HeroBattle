@@ -18,7 +18,7 @@ export class Navbar extends React.Component{
         smallMenuClassName="small-menu-classname"
         menu={
           <ul>
-            <li className="navHeader"><Link to="/" className="navHeadLink">Battle!</Link></li>
+            <li className="navHeader"><Link to="/battle" className="navHeadLink">Battle!</Link></li>
             <li ><Link className="navItem"  to="/createhero">Create Hero</Link></li>
             <li><Link className="navItem" to="/createpower">Create Superpower</Link></li>
             <li><Link className="navItem" to="/">Logout</Link></li>

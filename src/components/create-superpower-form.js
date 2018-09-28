@@ -29,7 +29,7 @@ export class CreatePowerForm extends React.Component{
 
 		this.props.dispatch(updatePointsAction(key,value));
 
-		if(this.props.availablePoints == 0){
+		if(parseInt(this.props.availablePoints,10) === 0){
 			return String(this.props.currentPower[key])
 		}
 
@@ -47,7 +47,6 @@ export class CreatePowerForm extends React.Component{
 	                </div>
 	            );
 	        }
-	     console.log(success);
 		let error;
 			if (this.props.error) {
 	            error = (

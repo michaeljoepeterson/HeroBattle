@@ -44,7 +44,7 @@ export default function reducer(state = initialState,action){
 		let sum = 0;
 		for (let key in newHeroStats){
 			if(key !== "availablePoints"){
-				sum += parseInt(newHeroStats[key]);
+				sum += parseInt(newHeroStats[key],10);
 
 			}
 		}

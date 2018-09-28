@@ -2,12 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Route, withRouter} from 'react-router-dom';
 
-import LoginForm from './login-form';
 import LandingPage from './landing-page';
 import SignUpPage from './signup-page';
 import Dashboard from './dashboard';
 import CreateHeroPage from './create-hero-page';
 import CreatePowerPage from './create-superpower-page';
+import StartBattlePage from './battle-page';
 export class App extends React.Component {
     render() {
         return (
@@ -17,6 +17,7 @@ export class App extends React.Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/createhero" component={CreateHeroPage} />
             <Route exact path="/createpower" component={CreatePowerPage} />
+            <Route exact path="/battle" component={StartBattlePage} />
             </div>
         );
     }
