@@ -87,7 +87,8 @@ export default function reducer(state = initialState,action){
 	else if(action.type === CREATE_HERO_ERROR){
 		return Object.assign({}, state, {
 			loading:null,
-			error:action.error
+			error:action.error,
+			message:null
         });
 	}
 

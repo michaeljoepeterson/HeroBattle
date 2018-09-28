@@ -117,7 +117,8 @@ export default function reducer(state = initialState,action){
 	else if(action.type === CREATE_POWER_ERROR){
 		return Object.assign({}, state, {
 			loading:null,
-			error:action.error
+			error:action.error,
+			message:null
         });
 	}
 	return state;

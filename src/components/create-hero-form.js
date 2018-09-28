@@ -64,6 +64,14 @@ export class CreateHeroForm extends React.Component{
 	}
 
 	render(){
+		let success;
+		if (this.props.success) {
+	            success = (
+	                <div className="form-error" aria-live="polite">
+	                    Hero Created!
+	                </div>
+	            );
+	        }
 		let error;
 			if (this.props.error) {
 	            error = (
@@ -86,6 +94,7 @@ export class CreateHeroForm extends React.Component{
 			<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				<h1>available Points {this.props.availablePoints}</h1>
 				{error}
+				{success}
 				<label htmlFor="heroName">Hero Name:</label>
 				<Field
 					component={Input}
@@ -189,7 +198,8 @@ const mapStateToProps = state => ({
     currentHero: state.hero.currenthero,
     powers: state.superpowers.powers, 
     powerNames: state.superpowers.powerNames,
-    availablePoints: state.hero.currenthero.availablePoints
+    availablePoints: state.hero.currenthero.availablePoints,
+    success:state.hero.message
 });
 
 CreateHeroForm = connect(mapStateToProps)(CreateHeroForm);

@@ -39,6 +39,15 @@ export class CreatePowerForm extends React.Component{
 	}
 
 	render(){
+		let success;
+		if (this.props.success) {
+	            success = (
+	                <div className="form-error" aria-live="polite">
+	                    Superpower Created!
+	                </div>
+	            );
+	        }
+	     console.log(success);
 		let error;
 			if (this.props.error) {
 	            error = (
@@ -51,6 +60,7 @@ export class CreatePowerForm extends React.Component{
 			<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				<h1>Available Points {this.props.availablePoints}</h1>
 				{error}
+				{success}
 				<label htmlFor="powerName">Power Name:</label>
 				<Field
 					component={Input}
@@ -100,7 +110,8 @@ export class CreatePowerForm extends React.Component{
 
 const mapStateToProps = state => ({
     currentPower: state.superpowers.currentPower,
-    availablePoints: state.superpowers.currentPower.availablePoints
+    availablePoints: state.superpowers.currentPower.availablePoints,
+    success:state.superpowers.message
 });
 
 CreatePowerForm = connect(mapStateToProps)(CreatePowerForm);
