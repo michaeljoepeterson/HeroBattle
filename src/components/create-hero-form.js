@@ -44,12 +44,7 @@ export class CreateHeroForm extends React.Component{
 		if(this.props.availablePoints == 0){
 			return String(this.props.currentHero[key])
 		}
-		else if(value < 100){
-			return "100";
-		}
-		else if (value > 150){
-			return "150";
-		}
+
 		else{
 			
 			return value;
@@ -63,12 +58,6 @@ export class CreateHeroForm extends React.Component{
 			return String(this.props.currentHero[key])
 		}
 
-		else if(value < 50){
-			return "50";
-		}
-		else if (value > 100){
-			return "100";
-		}
 		else{
 			return value;
 		}
@@ -109,6 +98,8 @@ export class CreateHeroForm extends React.Component{
 					type="number"
 					name="heroHealth"
 					normalize={this.oneHundredNormalizer.bind(this,"heroHealth")}
+					min="100"
+					max="150"
 					validate={[required,nonEmpty]}/>
 				<label htmlFor="heroAbilityPoints">Hero Ability Points:</label>
 				<Field
@@ -116,6 +107,8 @@ export class CreateHeroForm extends React.Component{
 					type="number"
 					name="heroAbilityPoints"
 					normalize={this.oneHundredNormalizer.bind(this,"heroAbilityPoints")}
+					min="100"
+					max="150"
 					validate={[required,nonEmpty]}/>
 				<label htmlFor="heroStrength">Hero Strength:</label>
 				<Field
@@ -123,6 +116,8 @@ export class CreateHeroForm extends React.Component{
 					type="number"
 					name="heroStrength"
 					normalize={this.fiftyNormalizer.bind(this,"heroStrength")}
+					min="50"
+					max="100"
 					validate={[required,nonEmpty]}/>
 				<label htmlFor="heroToughness">Hero Toughness:</label>
 				<Field
@@ -130,6 +125,8 @@ export class CreateHeroForm extends React.Component{
 					type="number"
 					name="heroToughness"
 					normalize={this.fiftyNormalizer.bind(this,"heroToughness")}
+					min="50"
+					max="100"
 					validate={[required,nonEmpty]}/>
 				<label htmlFor="heroAgility">Hero Agility:</label>
 				<Field
@@ -137,6 +134,8 @@ export class CreateHeroForm extends React.Component{
 					type="number"
 					name="heroAgility"
 					normalize={this.fiftyNormalizer.bind(this,"heroAgility")}
+					min="50"
+					max="100"
 					validate={[required,nonEmpty]}/>
 				<label htmlFor="heroSuperAbility">Hero Intelligence:</label>
 				<Field
@@ -144,6 +143,8 @@ export class CreateHeroForm extends React.Component{
 					type="number"
 					name="heroSuperAbility"
 					normalize={this.fiftyNormalizer.bind(this,"heroSuperAbility")}
+					min="50"
+					max="100"
 					validate={[required,nonEmpty]}/>
 
 				<label htmlFor="heroSuperpower1">Hero Super Power 1:</label>

@@ -33,12 +33,6 @@ export class CreatePowerForm extends React.Component{
 			return String(this.props.currentPower[key])
 		}
 
-		else if(value < 0){
-			return "0";
-		}
-		else if (value > 100){
-			return "100";
-		}
 		else{
 			return value;
 		}
@@ -69,6 +63,8 @@ export class CreatePowerForm extends React.Component{
 					type="number"
 					name="powerAttack"
 					normalize={this.normalizer.bind(this,"powerAttack")}
+					min="0"
+					max="100"
 					validate={[required,nonEmpty]}/>
 				<label htmlFor="powerDefence">SuperPower Defence:</label>
 				<Field
@@ -76,6 +72,8 @@ export class CreatePowerForm extends React.Component{
 					type="number"
 					name="powerDefence"
 					normalize={this.normalizer.bind(this,"powerDefence")}
+					min="0"
+					max="100"
 					validate={[required,nonEmpty]}/>
 				<label htmlFor="powerSpecialAttack">Superpower Special Attack:</label>
 				<Field
@@ -83,6 +81,8 @@ export class CreatePowerForm extends React.Component{
 					type="number"
 					name="powerSpecialAttack"
 					normalize={this.normalizer.bind(this,"powerSpecialAttack")}
+					min="0"
+					max="100"
 					validate={[required,nonEmpty]}/>
 					<button
                     type="submit"

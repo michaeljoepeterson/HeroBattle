@@ -20,6 +20,18 @@ export default class Input extends React.Component {
             );
         }
        // console.log(warning);
+       let onkeydown;
+       let isAndroid = navigator.userAgent.toLowerCase().match(/android\s[0-9].[0-9]/);
+       let isIOS = !!navigator.userAgent && /iPad|iPhone|iPod/.test(navigator.userAgent);
+       if(this.props.max){
+            onkeydown = (e)=> { 
+                e.preventDefault(); 
+                e.stopPropagation(); 
+            }
+       }
+       if(isAndroid ||  isIOS){
+        onkeydown = null;
+       }
         return (
             <div className="form-input">
                 <label htmlFor={this.props.input.name}>
@@ -32,6 +44,10 @@ export default class Input extends React.Component {
                     id={this.props.input.name}
                     type={this.props.type}
                     ref={input => (this.input = input)}
+                    max={this.props.max}
+                    min={this.props.min}
+                    onKeyDown={onkeydown}
+
                 />
             </div>
         );
