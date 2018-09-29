@@ -70,6 +70,51 @@ export class StartBattleForm extends React.Component{
 			);
 		}
 
+		let opponentData;
+		if(this.props.opponent){
+			opponentData=(
+				<div className="heroData">
+					<p>VS</p>
+					<p>Hero Name:{this.props.opponent.heroOpponent.heroName}</p>
+					<p>{this.props.opponent.heroOpponent.heroName} Health:{this.props.opponent.heroOpponent.maxhealth}</p>
+					<p>{this.props.opponent.heroOpponent.heroName} Ability Points:{this.props.opponent.heroOpponent.maxAbilityPoints}</p>
+					<p>{this.props.opponent.heroOpponent.heroName} Strength:{this.props.opponent.heroOpponent.strength}</p>
+					<p>{this.props.opponent.heroOpponent.heroName} Toughness:{this.props.opponent.heroOpponent.toughness}</p>
+					<p>{this.props.opponent.heroOpponent.heroName} Intelligence:{this.props.opponent.heroOpponent.superAbility}</p>
+					<p>{this.props.opponent.heroOpponent.heroName} Agility:{this.props.opponent.heroOpponent.agility}</p>
+					<p>Powers:</p>
+					<p>{this.props.opponent.heroOpponent.superPowers[0].powerName}</p>
+					<ul className="powerList">
+						<li>Attack:{this.props.opponent.heroOpponent.superPowers[0].attack}
+						</li>
+						<li>Defence:{this.props.opponent.heroOpponent.superPowers[0].defense}
+						</li>
+						<li>Special Attack:{this.props.opponent.heroOpponent.superPowers[0].specialAttack}
+						</li>
+					</ul>
+					<p>{this.props.opponent.heroOpponent.superPowers[1].powerName}</p>
+					<ul className="powerList">
+						<li>Attack:{this.props.opponent.heroOpponent.superPowers[1].attack}
+						</li>
+						<li>Defence:{this.props.opponent.heroOpponent.superPowers[1].defense}
+						</li>
+						<li>Special Attack:{this.props.opponent.heroOpponent.superPowers[1].specialAttack}
+						</li>
+					</ul>
+					<p>{this.props.opponent.heroOpponent.superPowers[2].powerName}</p>
+					<ul className="powerList">
+						<li>Attack:{this.props.opponent.heroOpponent.superPowers[2].attack}
+						</li>
+						<li>Defence:{this.props.opponent.heroOpponent.superPowers[2].defense}
+						</li>
+						<li>Special Attack:{this.props.opponent.heroOpponent.superPowers[2].specialAttack}
+						</li>
+					</ul>
+					<p>Created By:{this.props.opponent.opponent.username}</p>
+				</div>
+			);
+		}
+
 		let error;
 			if (this.props.error) {
 	            error = (
@@ -102,6 +147,7 @@ export class StartBattleForm extends React.Component{
 					</button>
 				</form>
 				{heroData}
+				{opponentData}
 			</div>
 		)
 	}
