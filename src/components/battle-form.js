@@ -30,7 +30,7 @@ export class StartBattleForm extends React.Component{
 		console.log("user data",this.props.currentUser);
 		console.log("opponent hero",this.props.opponent.heroOpponent);
 		console.log("opponent data",this.props.opponent.opponent);
-		//return this.props.dispatch(createHero(values));
+		
 	}
     render(){
     	//make sure to add try block for when populating heroes like with superpowers
@@ -42,7 +42,7 @@ export class StartBattleForm extends React.Component{
 		if(this.props.battleHero){
 			heroData=(
 				<div className="heroData">
-					<p>Hero Name:{this.props.battleHero.heroName}</p>
+					<p>{this.props.battleHero.heroName}</p>
 					<p>{this.props.battleHero.heroName} Health:{this.props.battleHero.maxhealth}</p>
 					<p>{this.props.battleHero.heroName} Ability Points:{this.props.battleHero.maxAbilityPoints}</p>
 					<p>{this.props.battleHero.heroName} Strength:{this.props.battleHero.strength}</p>
@@ -89,7 +89,7 @@ export class StartBattleForm extends React.Component{
 			opponentData=(
 				<div className="heroData">
 					<p>VS</p>
-					<p>Hero Name:{this.props.opponent.heroOpponent.heroName}</p>
+					<p>{this.props.opponent.heroOpponent.heroName}</p>
 					<p>{this.props.opponent.heroOpponent.heroName} Health:{this.props.opponent.heroOpponent.maxhealth}</p>
 					<p>{this.props.opponent.heroOpponent.heroName} Ability Points:{this.props.opponent.heroOpponent.maxAbilityPoints}</p>
 					<p>{this.props.opponent.heroOpponent.heroName} Strength:{this.props.opponent.heroOpponent.strength}</p>
