@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {required,nonEmpty} from '../validator';
 import Select from './select';
 import {getHero,setBattleHero} from "../actions/hero";
+import {getOpponent} from "../actions/battle";
 import "./battleFormStyles.css";
 export class StartBattleForm extends React.Component{
 
@@ -15,10 +16,16 @@ export class StartBattleForm extends React.Component{
     	this.props.dispatch(setBattleHero(this.props.heroes[selectedIndex],selectedIndex));
     	
     }
+    findOpponent(event){
+    	event.preventDefault();
+    	console.log("find opponent",this.props.username);
+    	this.props.dispatch(getOpponent(this.props.username));
+    }
     render(){
     	//make sure to add try block for when populating heroes like with superpowers
-		console.log(this.props.heroes);
+		console.log("hero list: ",this.props.heroes);
 		console.log("in render",this.props.battleHero);
+		console.log("in render opponent ",this.props.opponent);
 		//need to render this data
 		let heroData;
 		if(this.props.battleHero){
@@ -90,6 +97,9 @@ export class StartBattleForm extends React.Component{
 					defaultText="Select a hero"
 					onChange={this.selectHero.bind(this)}
 					validate={[required,nonEmpty]}/>
+					<button onClick={(e) => this.findOpponent(e)}>
+						Find Opponent
+					</button>
 				</form>
 				{heroData}
 			</div>
@@ -100,7 +110,8 @@ export class StartBattleForm extends React.Component{
 const mapStateToProps = state => ({
     heroes:state.hero.heroes,
     success:state.hero.message,
-    battleHero:state.hero.battleHero
+    battleHero:state.hero.battleHero,
+    opponent:state.battle.opponent
 });
 
 StartBattleForm = connect(mapStateToProps)(StartBattleForm);

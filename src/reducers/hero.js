@@ -108,7 +108,7 @@ export default function reducer(state = initialState,action){
 	else if(action.type === GET_HERO_SUCCESS){
 		return Object.assign({}, state, {
 			loading:null,
-			message:"success",
+			message:"get success",
 			heroes:action.heroes
         });
 	}

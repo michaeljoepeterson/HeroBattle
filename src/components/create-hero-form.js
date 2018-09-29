@@ -65,7 +65,7 @@ export class CreateHeroForm extends React.Component{
 
 	render(){
 		let success;
-		if (this.props.success) {
+		if (this.props.success === "success") {
 	            success = (
 	                <div className="form-error" aria-live="polite">
 	                    Hero Created!

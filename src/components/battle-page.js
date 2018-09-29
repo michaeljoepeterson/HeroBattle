@@ -10,7 +10,7 @@ export class StartBattlePage extends React.Component{
 			<div>
 				<Navbar />
 				<h1>Select a Hero {this.props.username}</h1>
-				<StartBattleForm uid={this.props.currentUser.id}/>
+				<StartBattleForm uid={this.props.currentUser.id} username={this.props.username}/>
 			</div>
 		)
 	}
