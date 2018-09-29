@@ -37,7 +37,8 @@ export default function reducer(state = initialState,action){
 		heroToughness:"50",
 		heroAgility:"50",
 		heroSuperAbility:"50",
-		availablePoints:"50"}
+		availablePoints:"50"},
+		battleHero:null
         })
 	}
 	else if(action.type === UPDATE_POINTS){

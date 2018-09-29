@@ -3,6 +3,12 @@ import {SubmissionError} from 'redux-form';
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './util';
 
+export const INITIALIZE = "INITIALIZE";
+
+export const initPageBattle = () => ({
+	type: INITIALIZE
+});
+
 export const GET_OPPONENT_REQUEST = "GET_OPPONENT_REQUEST";
 
 export const getOpponentRequest = () => ({

@@ -2,6 +2,7 @@ import {
 	GET_OPPONENT_REQUEST,
 	GET_OPPONENT_SUCCESS,
 	GET_OPPONENT_ERROR,
+	INITIALIZE
 } from '../actions/battle';
 
 const initialState = {
@@ -34,6 +35,16 @@ export default function reducer(state = initialState,action){
 			loading:null,
 			error:action.error,
 			message:null
+        });
+	}
+
+	else if(action.type === INITIALIZE){
+		return Object.assign({}, state, {
+			loading:null,
+			error:null,
+			message:null,
+			opponent:null,
+			results:null
         });
 	}
 

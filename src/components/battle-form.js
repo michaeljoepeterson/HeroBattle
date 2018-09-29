@@ -3,13 +3,15 @@ import {Field, reduxForm, focus} from 'redux-form';
 import {connect} from 'react-redux';
 import {required,nonEmpty} from '../validator';
 import Select from './select';
-import {getHero,setBattleHero} from "../actions/hero";
-import {getOpponent} from "../actions/battle";
+import {getHero,setBattleHero,initPage} from "../actions/hero";
+import {getOpponent,initPageBattle} from "../actions/battle";
 import "./battleFormStyles.css";
 export class StartBattleForm extends React.Component{
 
 	componentDidMount() {
-		this.props.dispatch(getHero(this.props.uid))
+		this.props.dispatch(getHero(this.props.uid));
+		this.props.dispatch(initPage());
+		this.props.dispatch(initPageBattle());
     }
     selectHero(hero){
     	const selectedIndex = hero.target.selectedIndex - 1;
@@ -21,10 +23,19 @@ export class StartBattleForm extends React.Component{
     	console.log("find opponent",this.props.username);
     	this.props.dispatch(getOpponent(this.props.username));
     }
+
+    onSubmit(values) {
+		console.log("dispatch submit action",values);
+		console.log("user hero",this.props.battleHero);
+		console.log("user data",this.props.currentUser);
+		console.log("opponent hero",this.props.opponent.heroOpponent);
+		console.log("opponent data",this.props.opponent.opponent);
+		//return this.props.dispatch(createHero(values));
+	}
     render(){
     	//make sure to add try block for when populating heroes like with superpowers
-		console.log("hero list: ",this.props.heroes);
-		console.log("in render",this.props.battleHero);
+		//console.log("hero list: ",this.props.heroes);
+		//console.log("in render",this.props.battleHero);
 		console.log("in render opponent ",this.props.opponent);
 		//need to render this data
 		let heroData;
@@ -71,7 +82,10 @@ export class StartBattleForm extends React.Component{
 		}
 
 		let opponentData;
-		if(this.props.opponent){
+		try{
+
+
+		if(this.props.opponent.heroOpponent){
 			opponentData=(
 				<div className="heroData">
 					<p>VS</p>
@@ -114,6 +128,10 @@ export class StartBattleForm extends React.Component{
 				</div>
 			);
 		}
+		}
+		catch(err){
+			opponentData = null;
+		}
 
 		let error;
 			if (this.props.error) {
@@ -132,7 +150,7 @@ export class StartBattleForm extends React.Component{
 		}
 		return(
 			<div>
-				<form>
+				<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				{error}
 				<label htmlFor="heroSelect">Hero</label>
 					<Field
@@ -144,6 +162,10 @@ export class StartBattleForm extends React.Component{
 					validate={[required,nonEmpty]}/>
 					<button onClick={(e) => this.findOpponent(e)}>
 						Find Opponent
+					</button>
+					<button type="submit"
+                    disabled={this.props.pristine || this.props.submitting}>
+						Battle!
 					</button>
 				</form>
 				{heroData}
