@@ -2,14 +2,15 @@ import React from 'react';
 import requiresLogin from './requires-login';
 import {connect} from 'react-redux';
 import Navbar from './navComponent';
+import StartBattleForm from "./battle-form";
 export class StartBattlePage extends React.Component{
 
 	render(){
-		console.log(this.props.currentUser);
 		return(
 			<div>
 				<Navbar />
 				<h1>Select a Hero {this.props.username}</h1>
+				<StartBattleForm uid={this.props.currentUser.id}/>
 			</div>
 		)
 	}

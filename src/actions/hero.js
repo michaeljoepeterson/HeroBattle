@@ -41,6 +41,26 @@ export const createHeroError = error =>( {
 	error
 });
 
+export const GET_HERO_REQUEST = "GET_HERO_REQUEST";
+
+export const getHeroRequest = () => ({
+	type: GET_HERO_REQUEST
+});
+
+export const GET_HERO_SUCCESS = "GET_HERO_SUCCESS";
+
+export const getHeroSuccess = heroes => ({
+	type: GET_HERO_SUCCESS,
+	heroes
+});
+
+export const GET_HERO_ERROR = "GET_HERO_ERROR";
+
+export const getHeroError = error =>( {
+	type: GET_HERO_ERROR,
+	error
+});
+
 export const createHero = (heroData) => (dispatch , getState) => {
 	dispatch(createHeroRequest());
 	const authToken = getState().auth.authToken;
@@ -85,4 +105,39 @@ export const createHero = (heroData) => (dispatch , getState) => {
 		})
 	);
 
+}
+
+export const getHero = (userId) => (dispatch , getState) => {
+	dispatch(getHeroRequest());
+	const authToken = getState().auth.authToken;
+	return(fetch(`${API_BASE_URL}/hero?userId=${userId}`,{
+			method:"GET",
+			headers: {
+            
+            Authorization: `Bearer ${authToken}`
+        	}
+		})
+		.then(
+			res => {
+				return normalizeResponseErrors(res)
+				
+			}
+		)
+		.then(res => {
+			//console.log(res);
+			return res.json()
+		})
+		.then(data => {
+			dispatch(getHeroSuccess(data));
+		})
+		.catch(err => {
+			dispatch(getHeroError(err));
+
+			return Promise.reject(
+                    new SubmissionError({
+                        _error: "an error occured"
+                    })
+                )
+		})
+	)
 }

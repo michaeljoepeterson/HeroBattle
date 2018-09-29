@@ -3,7 +3,10 @@ import {
 	UPDATE_POINTS,
 	CREATE_HERO_REQUEST,
 	CREATE_HERO_SUCCESS,
-	CREATE_HERO_ERROR
+	CREATE_HERO_ERROR,
+	GET_HERO_REQUEST,
+	GET_HERO_SUCCESS,
+	GET_HERO_ERROR
 } from '../actions/hero';
 
 const initialState = {
@@ -18,8 +21,8 @@ const initialState = {
 		heroAgility:"50",
 		heroSuperAbility:"50",
 		availablePoints:"50"
-	}
-
+	},
+	heroes:null
 };
 
 export default function reducer(state = initialState,action){
@@ -85,6 +88,30 @@ export default function reducer(state = initialState,action){
         });
 	}
 	else if(action.type === CREATE_HERO_ERROR){
+		return Object.assign({}, state, {
+			loading:null,
+			error:action.error,
+			message:null
+        });
+	}
+
+	else if(action.type === GET_HERO_REQUEST){
+		return Object.assign({}, state, {
+			loading:true,
+			error:null,
+			message:null
+        });
+	}
+
+	else if(action.type === GET_HERO_SUCCESS){
+		return Object.assign({}, state, {
+			loading:null,
+			message:"success",
+			heroes:action.heroes
+        });
+	}
+
+	else if(action.type === GET_HERO_ERROR){
 		return Object.assign({}, state, {
 			loading:null,
 			error:action.error,
