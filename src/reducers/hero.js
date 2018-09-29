@@ -6,7 +6,8 @@ import {
 	CREATE_HERO_ERROR,
 	GET_HERO_REQUEST,
 	GET_HERO_SUCCESS,
-	GET_HERO_ERROR
+	GET_HERO_ERROR,
+	SET_BATTLE_HERO
 } from '../actions/hero';
 
 const initialState = {
@@ -22,7 +23,8 @@ const initialState = {
 		heroSuperAbility:"50",
 		availablePoints:"50"
 	},
-	heroes:null
+	heroes:null,
+	battleHero:null
 };
 
 export default function reducer(state = initialState,action){
@@ -116,6 +118,18 @@ export default function reducer(state = initialState,action){
 			loading:null,
 			error:action.error,
 			message:null
+        });
+	}
+
+	else if(action.type === SET_BATTLE_HERO){
+		console.log("reducer hero",action.hero);
+		if(action.key === -1){
+			return Object.assign({},state, {
+			battleHero:null
+        });
+		}
+		return Object.assign({}, state, {
+			battleHero:action.hero
         });
 	}
 

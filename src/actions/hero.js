@@ -61,6 +61,13 @@ export const getHeroError = error =>( {
 	error
 });
 
+export const SET_BATTLE_HERO = "SET_BATTLE_HERO";
+
+export const setBattleHero = (hero,key) =>( {
+	type: SET_BATTLE_HERO,
+	hero,
+	key
+});
 export const createHero = (heroData) => (dispatch , getState) => {
 	dispatch(createHeroRequest());
 	const authToken = getState().auth.authToken;

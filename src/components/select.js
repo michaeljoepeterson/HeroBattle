@@ -32,7 +32,7 @@ export default class Select extends React.Component {
                     id={this.props.input.name}
                     type={this.props.type}
                     ref={input => (this.input = input)}
-                >  <option value="">Select a power</option>
+                >  <option value="">{this.props.defaultText}</option>
                     {this.props.options}
       )}
                 </select>

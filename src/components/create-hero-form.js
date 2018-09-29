@@ -161,6 +161,7 @@ export class CreateHeroForm extends React.Component{
 					component={Select}
 					name="heroSuperpower1"
 					options={superpowersData}
+					defaultText="Select a power"
 					validate={[required,nonEmpty]}>
 					
 				</Field>
@@ -169,6 +170,7 @@ export class CreateHeroForm extends React.Component{
 					component={Select}
 					name="heroSuperpower2"
 					options={superpowersData}
+					defaultText="Select a power"
 					validate={[required,nonEmpty]}>
 				</Field>
 				<label htmlFor="heroSuperpower3">Hero Super Power 3:</label>
@@ -176,6 +178,7 @@ export class CreateHeroForm extends React.Component{
 					component={Select}
 					name="heroSuperpower3"
 					options={superpowersData}
+					defaultText="Select a power"
 					validate={[required,nonEmpty]}>
 					
 				</Field>
