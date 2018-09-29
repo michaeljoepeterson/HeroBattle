@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {required,nonEmpty} from '../validator';
 import Select from './select';
 import {getHero,setBattleHero} from "../actions/hero";
+import "./battleFormStyles.css";
 export class StartBattleForm extends React.Component{
 
 	componentDidMount() {
@@ -19,6 +20,49 @@ export class StartBattleForm extends React.Component{
 		console.log(this.props.heroes);
 		console.log("in render",this.props.battleHero);
 		//need to render this data
+		let heroData;
+		if(this.props.battleHero){
+			heroData=(
+				<div className="heroData">
+					<p>Hero Name:{this.props.battleHero.heroName}</p>
+					<p>{this.props.battleHero.heroName} Health:{this.props.battleHero.maxhealth}</p>
+					<p>{this.props.battleHero.heroName} Ability Points:{this.props.battleHero.maxAbilityPoints}</p>
+					<p>{this.props.battleHero.heroName} Strength:{this.props.battleHero.strength}</p>
+					<p>{this.props.battleHero.heroName} Toughness:{this.props.battleHero.toughness}</p>
+					<p>{this.props.battleHero.heroName} Intelligence:{this.props.battleHero.superAbility}</p>
+					<p>{this.props.battleHero.heroName} Agility:{this.props.battleHero.agility}</p>
+					<p>Powers:</p>
+					<p>{this.props.battleHero.superPowers[0].powerName}</p>
+					<ul className="powerList">
+						<li>Attack:{this.props.battleHero.superPowers[0].attack}
+						</li>
+						<li>Defence:{this.props.battleHero.superPowers[0].defense}
+						</li>
+						<li>Special Attack:{this.props.battleHero.superPowers[0].specialAttack}
+						</li>
+					</ul>
+					<p>{this.props.battleHero.superPowers[1].powerName}</p>
+					<ul className="powerList">
+						<li>Attack:{this.props.battleHero.superPowers[1].attack}
+						</li>
+						<li>Defence:{this.props.battleHero.superPowers[1].defense}
+						</li>
+						<li>Special Attack:{this.props.battleHero.superPowers[1].specialAttack}
+						</li>
+					</ul>
+					<p>{this.props.battleHero.superPowers[2].powerName}</p>
+					<ul className="powerList">
+						<li>Attack:{this.props.battleHero.superPowers[2].attack}
+						</li>
+						<li>Defence:{this.props.battleHero.superPowers[2].defense}
+						</li>
+						<li>Special Attack:{this.props.battleHero.superPowers[2].specialAttack}
+						</li>
+					</ul>
+				</div>
+			);
+		}
+
 		let error;
 			if (this.props.error) {
 	            error = (
@@ -47,6 +91,7 @@ export class StartBattleForm extends React.Component{
 					onChange={this.selectHero.bind(this)}
 					validate={[required,nonEmpty]}/>
 				</form>
+				{heroData}
 			</div>
 		)
 	}
