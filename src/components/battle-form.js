@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {required,nonEmpty} from '../validator';
 import Select from './select';
 import {getHero,setBattleHero,initPage} from "../actions/hero";
-import {getOpponent,initPageBattle} from "../actions/battle";
+import {getOpponent,initPageBattle,startBattle} from "../actions/battle";
 import "./battleFormStyles.css";
 export class StartBattleForm extends React.Component{
 
@@ -25,12 +25,13 @@ export class StartBattleForm extends React.Component{
     }
 
     onSubmit(values) {
-		console.log("dispatch submit action",values);
+		//console.log("dispatch submit action",values);
 		console.log("user hero",this.props.battleHero);
 		console.log("user data",this.props.currentUser);
 		console.log("opponent hero",this.props.opponent.heroOpponent);
 		console.log("opponent data",this.props.opponent.opponent);
-		
+
+		return this.props.dispatch(startBattle(this.props.battleHero,this.props.opponent.heroOpponent,this.props.currentUser,this.props.opponent.opponent))
 	}
     render(){
     	//make sure to add try block for when populating heroes like with superpowers

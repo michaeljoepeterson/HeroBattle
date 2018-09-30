@@ -29,6 +29,26 @@ export const getOpponentError = error =>( {
 	error
 });
 
+export const BATTLE_REQUEST = "BATTLE_REQUEST";
+
+export const battleRequest = () => ({
+	type: BATTLE_REQUEST
+});
+
+export const BATTLE_SUCCESS = "BATTLE_SUCCESS";
+
+export const battleSuccess = results => ({
+	type: BATTLE_SUCCESS,
+	results
+});
+
+export const BATTLE_ERROR = "BATTLE_ERROR";
+
+export const battleError = error =>( {
+	type: BATTLE_ERROR,
+	error
+});
+
 export const getOpponent =(username)=>(dispatch,getState)=>{
 	dispatch(getOpponentRequest());
 	const authToken = getState().auth.authToken;
@@ -52,6 +72,39 @@ export const getOpponent =(username)=>(dispatch,getState)=>{
 		.then(data => {
 			dispatch(getOpponentSuccess(data));
 		})
+		.catch(err => {
+			dispatch(getOpponentError(err));
+
+			return Promise.reject(
+                    new SubmissionError({
+                        _error: "an error occured"
+                    })
+                )
+		})
+	)
+}
+
+export const startBattle = (currentHero,opponentHero,currentUser,opponentUser) => (dispatch,getState) => {
+	dispatch(battleRequest());
+	const authToken = getState().auth.authToken;
+
+	return(
+		fetch(`${API_BASE_URL}/battle`,{
+			method:"POST",
+			headers:{
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${authToken}`
+			},
+			body:JSON.stringify({
+				heroOpponent:opponentHero,
+				opponent:opponentUser,
+				currentUser:currentUser,
+				currentHero:currentHero
+			})
+		})
+		.then(res => normalizeResponseErrors(res))
+		.then(res=>res.json())
+		.then(data => dispatch(battleSuccess(data)))
 		.catch(err => {
 			dispatch(getOpponentError(err));
 

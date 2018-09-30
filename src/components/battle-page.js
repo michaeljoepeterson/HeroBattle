@@ -9,7 +9,7 @@ export class StartBattlePage extends React.Component{
 	render(){
 		let formRender;
 		if(this.props.results){
-			formRender = null;
+			formRender = (<ResultsForm />);
 		}
 		else{
 			formRender = (<StartBattleForm uid={this.props.currentUser.id} username={this.props.username} currentUser={this.props.currentUser}/>);
