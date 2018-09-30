@@ -1,0 +1,9 @@
+.responsiveTable{
+	overflow-x:auto
+}
+.defaultTable{
+	border-collapse: collapse;
+}
+table,th,td{
+	border: 1px solid black;
+}

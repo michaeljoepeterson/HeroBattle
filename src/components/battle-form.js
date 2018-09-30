@@ -10,8 +10,6 @@ export class StartBattleForm extends React.Component{
 
 	componentDidMount() {
 		this.props.dispatch(getHero(this.props.uid));
-		this.props.dispatch(initPage());
-		this.props.dispatch(initPageBattle());
     }
     selectHero(hero){
     	const selectedIndex = hero.target.selectedIndex - 1;
@@ -151,6 +149,7 @@ export class StartBattleForm extends React.Component{
 		}
 		return(
 			<div>
+			<h1>Select a Hero {this.props.username}</h1>
 				<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				{error}
 				<label htmlFor="heroSelect">Hero</label>
