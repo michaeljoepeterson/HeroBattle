@@ -1,5 +1,5 @@
 import React from 'react';
-import {Field, reduxForm, focus} from 'redux-form';
+import {reduxForm, focus} from 'redux-form';
 import {connect} from 'react-redux';
 import {initPage} from "../actions/hero";
 import {initPageBattle} from "../actions/battle";
@@ -15,6 +15,25 @@ export class ResultsForm extends React.Component{
         //css card display for heroes
 		console.log("results on results page", this.props.results);
         let resultData;
+        let winner;
+        try{
+            if(this.props.results.hero1Wins > this.props.results.hero2Wins){
+                winner = (<p>{this.props.username} won with {this.props.battleHero.heroName}</p>
+                );
+
+            }
+            else if(this.props.results.hero1Wins < this.props.results.hero2Wins){
+                winner = (<p>{this.props.opponent.opponent.username} won with {this.props.opponent.heroOpponent.heroName}</p>
+                );
+            }
+            else{
+                winner = (<p>The battle was a draw!</p>)
+
+            }
+        }
+        catch(err){
+            winner = null;
+        }
         try{
             if(this.props.results){
                resultData = (<div>
@@ -61,6 +80,7 @@ export class ResultsForm extends React.Component{
             <div>
 			<h1>Results page</h1>
             {resultData}
+            {winner}
             <form>
                 <button onClick={(e)=>this.findMatch(e)}>
                     New Battle

@@ -8,6 +8,7 @@ import Dashboard from './dashboard';
 import CreateHeroPage from './create-hero-page';
 import CreatePowerPage from './create-superpower-page';
 import StartBattlePage from './battle-page';
+import LeaderboardPage from './leaderboard-page';
 export class App extends React.Component {
     render() {
         return (
@@ -18,6 +19,7 @@ export class App extends React.Component {
             <Route exact path="/createhero" component={CreateHeroPage} />
             <Route exact path="/createpower" component={CreatePowerPage} />
             <Route exact path="/battle" component={StartBattlePage} />
+            <Route exact path="/leaderboard" component={LeaderboardPage} />
             </div>
         );
     }

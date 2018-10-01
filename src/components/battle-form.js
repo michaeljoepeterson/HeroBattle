@@ -3,8 +3,8 @@ import {Field, reduxForm, focus} from 'redux-form';
 import {connect} from 'react-redux';
 import {required,nonEmpty} from '../validator';
 import Select from './select';
-import {getHero,setBattleHero,initPage} from "../actions/hero";
-import {getOpponent,initPageBattle,startBattle} from "../actions/battle";
+import {getHero,setBattleHero} from "../actions/hero";
+import {getOpponent,startBattle} from "../actions/battle";
 import "./battleFormStyles.css";
 export class StartBattleForm extends React.Component{
 

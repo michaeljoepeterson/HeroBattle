@@ -5,7 +5,7 @@ import Navbar from './navComponent';
 export class Dashboard extends React.Component{
 
 	render(){
-		
+
 	return (
         <div className="home">
             <Navbar />
@@ -19,6 +19,7 @@ const mapStateToProps = state => {
     //const {currentUser} = state.auth;
     return {
         username: state.auth.currentUser.username,
+        user:state.auth.currentUser
     };
 };
 
