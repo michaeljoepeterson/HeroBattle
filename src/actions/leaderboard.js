@@ -46,4 +46,7 @@ export const getLeaderboard = () => (dispatch , getState) => {
 		.then(data => {
 			dispatch(getLeaderboardSuccess(data));
 		})
+		.catch(err => {
+			dispatch(getLeaderboardError(err));
+		})
 }

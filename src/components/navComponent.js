@@ -22,7 +22,7 @@ export class Navbar extends React.Component{
             <li ><Link className="navItem"  to="/createhero">New Hero</Link></li>
             <li><Link className="navItem" to="/createpower">New Power</Link></li>
             <li><Link className="navItem" to="/leaderboard">Leaderboard</Link></li>
-            <li><Link className="navItem" to="/leaderboard">Stats</Link></li>
+            <li><Link className="navItem" to="/stats">Stats</Link></li>
             <li><Link className="navItem" to="/">Logout</Link></li>
           </ul>
         }/>

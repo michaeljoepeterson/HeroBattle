@@ -12,9 +12,18 @@ export class LeaderboardPage extends React.Component{
 		this.props.dispatch(getLeaderboard());
     }
 	render(){
-		console.log("here are the scores ",this.props.scores);
+		//console.log("here are the scores ",this.props.scores);
 		let scoreData = [];
+		let error;
+		if (this.props.error) {
+	            error = (
+	                <div className="form-error" aria-live="polite">
+	                    {this.props.error}
+	                </div>
+	            );
+	        }
 		try{
+
 			if(this.props.scores){
 				scoreData = this.props.scores.map((score,index) => (<tr key={score.username}>
 						<td>{index + 1}</td>
@@ -32,6 +41,7 @@ export class LeaderboardPage extends React.Component{
 			<div>
 				<Navbar />
 				<h1>Leaderboard</h1>
+				{error}
 				<div className="responsiveTable">
 					<table className="defaultTable">
 						<tbody>
@@ -54,7 +64,8 @@ export class LeaderboardPage extends React.Component{
 
 const mapStateToProps = state => {
     return {
-        scores: state.leaderboard.scores
+        scores: state.leaderboard.scores,
+        error: state.leaderboard.error
     };
 };
 export default requiresLogin()(connect(mapStateToProps)(LeaderboardPage));

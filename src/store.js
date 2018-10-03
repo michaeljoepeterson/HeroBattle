@@ -6,6 +6,7 @@ import superpowerReducer from './reducers/superpowers';
 import heroReducer from './reducers/hero';
 import battleReducer from './reducers/battle';
 import leaderboardReducer from './reducers/leaderboard';
+import statsReducer from './reducers/stats';
 export default createStore(
     combineReducers({
         form: formReducer,
@@ -13,6 +14,7 @@ export default createStore(
         hero:heroReducer,
         superpowers:superpowerReducer,
         battle:battleReducer,
+        stats:statsReducer,
         leaderboard:leaderboardReducer
     }),applyMiddleware(thunk)
 );

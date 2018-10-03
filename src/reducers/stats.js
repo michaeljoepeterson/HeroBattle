@@ -1,51 +1,64 @@
 import {
-	GET_LEADERBOARD_REQUEST,
-	GET_LEADERBOARD_SUCCESS,
-	GET_LEADERBOARD_ERROR,
+	GET_STATS_REQUEST,
+	GET_STATS_SUCCESS,
+	GET_STATS_ERROR,
 	INITIALIZE_PAGE
-} from "../actions/leaderboard";
+} from "../actions/stats";
 
 const initialState = {
 	loading: false,
 	error: null,
 	message:null,
-	scores:null
+	userStats:{
+		winRate:null,
+		wins:null,
+		matches:null,
+		matchHistory:null
+	}
 };
 
 export default function reducer(state = initialState,action){
 	if(action.type === INITIALIZE_PAGE){
 		//console.log("hero reducer called",state);
 		return Object.assign({}, state, {
-			scores:null
+			userStats:{
+				winRate:null,
+				wins:null,
+				matches:null,
+				matchHistory:null
+			}
         })
 	}
 
-	else if(action.type === GET_LEADERBOARD_REQUEST){
-		console.log("get leaderboard request");
+	else if(action.type === GET_STATS_REQUEST){
 		return Object.assign({}, state, {
             loading: true,
             error:null,
-            message:null,
-            scores:null
+            userStats:{
+				winRate:null,
+				wins:null,
+				matches:null,
+				matchHistory:null
+			},
+            message:null
         });
 	}
 
-	else if(action.type === GET_LEADERBOARD_SUCCESS){
-		console.log("action leaderboard", action.powers);
-		//console.log("powers name arr in action",powerNamesArr);
+	else if(action.type === GET_STATS_SUCCESS){
+		//console.log("reducer stats ",action.userStats)
 		return Object.assign({}, state, {
 			loading:false,
-			scores:action.scores,
+			userStats:action.userStats,
             error:null,
             message:"success"
         });
 	}
-	else if(action.type === GET_LEADERBOARD_ERROR){
-		console.log("leaderboard error");
+	else if(action.type === GET_STATS_ERROR){
+
 		return Object.assign({}, state, {
 			loading:false,
             error: "an error occured",
-            scores:null
+            message:null
         });
 	}
 
