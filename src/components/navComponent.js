@@ -6,8 +6,20 @@ import Icon from 'react-icons-kit';
 import {thinDown} from 'react-icons-kit/entypo/thinDown'
 import {thinUp} from 'react-icons-kit/entypo/thinUp'
 import {Link} from 'react-router-dom';
+import {clearAuth} from '../actions/auth';
+import {clearAuthToken} from '../local-storage';
 
 export class Navbar extends React.Component{
+
+    logOut() {
+        //action that clears all auth info for user
+        //see auth reducer
+        this.props.dispatch(clearAuth());
+        //remove auth token from local storage
+        clearAuthToken();
+        //console.log("logout");
+    }
+
 	render(){
 		return(
 		<ResponsiveMenu
@@ -23,7 +35,7 @@ export class Navbar extends React.Component{
             <li><Link className="navItem" to="/createpower">New Power</Link></li>
             <li><Link className="navItem" to="/leaderboard">Leaderboard</Link></li>
             <li><Link className="navItem" to="/stats">Stats</Link></li>
-            <li><Link className="navItem" to="/">Logout</Link></li>
+            <li><button onClick={() => this.logOut()} className="navItem" to="/">Logout</button></li>
           </ul>
         }/>
         );

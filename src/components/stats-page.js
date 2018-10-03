@@ -14,7 +14,6 @@ export class StatsPage extends React.Component{
 
 	render(){
 
-		console.log("stats ",this.props.stats);
 		let totalStats;
 		let statsTable;
 		let error;
