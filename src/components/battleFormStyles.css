@@ -1,3 +1,9 @@
 .powerList{
 	background-color: transparent; 
 }
+.centerButton{
+	text-align:center;
+}
+.battleButton{
+	display:block;
+}

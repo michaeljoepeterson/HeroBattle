@@ -126,7 +126,7 @@ export class StartBattleForm extends React.Component{
 					<p>Created By:{this.props.opponent.opponent.username}</p>
 				</div>
 			);
-		}
+			}
 		}
 		catch(err){
 			opponentData = null;
@@ -172,16 +172,19 @@ export class StartBattleForm extends React.Component{
 					defaultText="Select a hero"
 					onChange={this.selectHero.bind(this)}
 					validate={[required,nonEmpty]}/>
+					<div className="centerButton">
 					<button onClick={(e) => this.findOpponent(e)}>
 						Find Opponent
 					</button>
+					</div>
+					{heroData}
+					{opponentData}
 					<button type="submit"
-                    disabled={this.props.pristine || this.props.submitting}>
+                    disabled={this.props.pristine || this.props.submitting || this.props.opponent === null}>
 						Battle!
 					</button>
 				</form>
-				{heroData}
-				{opponentData}
+				
 			</div>
 		)
 	}

@@ -42,6 +42,8 @@ ul > li > button {
     padding: 5px;
     text-decoration: none;
     font-size: 17px;
+    display: block;
+    width: 100%;
 }
 .largeMenu > ul{
 	height: 30px;
@@ -61,6 +63,9 @@ ul > li > button {
 @media (min-width: 501px){
 
 	ul > li > a{
+		display: inline;
+	}
+	ul > li > button{
 		display: inline;
 	}
 }
