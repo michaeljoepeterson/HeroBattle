@@ -6,6 +6,7 @@ import {initPage} from "../actions/hero";
 import {initPageBattle} from "../actions/battle";
 import StartBattleForm from "./battle-form";
 import ResultsForm from "./results-form";
+import "./center.css";
 export class StartBattlePage extends React.Component{
 
 	componentDidMount() {
@@ -24,7 +25,9 @@ export class StartBattlePage extends React.Component{
 		return(
 			<div>
 				<Navbar />
+				<div className="home box center">
 				{formRender}
+				</div>
 			</div>
 		)
 	}

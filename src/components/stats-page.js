@@ -4,6 +4,7 @@ import requiresLogin from './requires-login';
 import Navbar from './navComponent';
 import {getStats,initPage} from "../actions/stats";
 import "./responsive-table.css";
+import "./center.css";
 
 export class StatsPage extends React.Component{
 
@@ -60,11 +61,12 @@ export class StatsPage extends React.Component{
 		return(
 			<div>
 				<Navbar/>
+				<div className="home box center">
 				<h1>Here are your stats {this.props.username}</h1>
 				{totalStats}
 				{error}
 				<div className="responsiveTable">
-					<table className="defaultTable">
+					<table className="defaultTable centerTable">
 						<tbody>
 							<tr>
 								<th>Match</th>
@@ -76,6 +78,7 @@ export class StatsPage extends React.Component{
 							{statsTable}
 						</tbody>
 					</table>
+				</div>
 				</div>
 			</div>
 		)

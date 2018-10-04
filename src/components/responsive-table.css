@@ -1,8 +1,12 @@
 .responsiveTable{
-	overflow-x:auto
+	overflow-x:auto;
 }
 .defaultTable{
 	border-collapse: collapse;
+}
+.centerTable{
+	margin-left:auto; 
+    margin-right:auto;
 }
 table,th,td{
 	border: 1px solid black;

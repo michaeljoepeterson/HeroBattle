@@ -4,7 +4,7 @@ import requiresLogin from './requires-login';
 import Navbar from './navComponent';
 import {getLeaderboard,initPage} from "../actions/leaderboard";
 import "./responsive-table.css";
-
+import "./center.css";
 export class LeaderboardPage extends React.Component{
 
 	componentDidMount() {
@@ -40,10 +40,11 @@ export class LeaderboardPage extends React.Component{
 		return(
 			<div>
 				<Navbar />
-				<h1>Leaderboard</h1>
+				<div className="home box center">
+				<h1>Top Players</h1>
 				{error}
 				<div className="responsiveTable">
-					<table className="defaultTable">
+					<table className="defaultTable centerTable">
 						<tbody>
 							<tr>
 								<th>Rank</th>
@@ -55,6 +56,7 @@ export class LeaderboardPage extends React.Component{
 							{scoreData}
 						</tbody>
 					</table>
+				</div>
 				</div>
 			</div>
 		)
