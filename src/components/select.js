@@ -32,6 +32,7 @@ export default class Select extends React.Component {
                     id={this.props.input.name}
                     type={this.props.type}
                     ref={input => (this.input = input)}
+                    className={this.props.className}
                 >  <option value="">{this.props.defaultText}</option>
                     {this.props.options}
       )}

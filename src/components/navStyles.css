@@ -28,6 +28,9 @@ ul > li > a:hover{
 	color: black;
 	background-color: white;
 }
+ul > li > a{
+	display: block;
+}
 ul > li > button {
 	border: none;
 	background-image:none;
@@ -53,4 +56,11 @@ ul > li > button {
 }
 .largeMenu > ul> .navHeader{
 	float: left;
+}
+
+@media (min-width: 501px){
+
+	ul > li > a{
+		display: inline;
+	}
 }

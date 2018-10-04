@@ -4,7 +4,6 @@ import {Route, withRouter} from 'react-router-dom';
 
 import LandingPage from './landing-page';
 import SignUpPage from './signup-page';
-import Dashboard from './dashboard';
 import CreateHeroPage from './create-hero-page';
 import CreatePowerPage from './create-superpower-page';
 import StartBattlePage from './battle-page';
@@ -16,7 +15,6 @@ export class App extends React.Component {
             <div className="app">
                 <Route exact path="/" component={LandingPage} />
             <Route exact path="/signup" component={SignUpPage} />
-            <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/createhero" component={CreateHeroPage} />
             <Route exact path="/createpower" component={CreatePowerPage} />
             <Route exact path="/battle" component={StartBattlePage} />

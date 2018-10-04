@@ -30,12 +30,13 @@ export class Navbar extends React.Component{
         smallMenuClassName="small-menu-classname"
         menu={
           <ul>
+            <li><button onClick={() => this.logOut()} className="navItem" to="/">Logout</button></li>
             <li className="navHeader"><Link to="/battle" className="navHeadLink">Battle!</Link></li>
             <li ><Link className="navItem"  to="/createhero">New Hero</Link></li>
             <li><Link className="navItem" to="/createpower">New Power</Link></li>
             <li><Link className="navItem" to="/leaderboard">Leaderboard</Link></li>
             <li><Link className="navItem" to="/stats">Stats</Link></li>
-            <li><button onClick={() => this.logOut()} className="navItem" to="/">Logout</button></li>
+            
           </ul>
         }/>
         );

@@ -47,7 +47,7 @@ export default class Input extends React.Component {
                     max={this.props.max}
                     min={this.props.min}
                     onKeyDown={onkeydown}
-
+                    className={this.props.className}
                 />
             </div>
         );

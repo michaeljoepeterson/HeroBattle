@@ -18,7 +18,7 @@ export class StartBattleForm extends React.Component{
     }
     findOpponent(event){
     	event.preventDefault();
-    	console.log("find opponent",this.props.username);
+    	//console.log("find opponent",this.props.username);
     	this.props.dispatch(getOpponent(this.props.username));
     }
 
@@ -147,11 +147,23 @@ export class StartBattleForm extends React.Component{
 		catch(err){
 			heroesData = [];
 		}
+		let createHeroMessage;
+		try{
+			if(this.props.heroes.length === 0){
+				createHeroMessage = (
+					<p>Looks like you don't have any hereos, try creating some!</p>
+				)
+			}
+		}
+		catch(err){
+			createHeroMessage = null;
+		}
 		return(
 			<div>
 			<h1>Select a Hero {this.props.username}</h1>
 				<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				{error}
+				{createHeroMessage}
 				<label htmlFor="heroSelect">Hero</label>
 					<Field
 					component={Select}
