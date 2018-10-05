@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {required,nonEmpty,isTrimmed} from '../validator';
 import Input from './input';
 import Select from './select';
-import {initPage,updatePointsAction,createHero,updateImage,updateName} from "../actions/hero";
+import {initPage,updatePointsAction,createHero,updateImage,updateName,updatePower} from "../actions/hero";
 import {getPowers} from '../actions/superpowers';
 import './card.css';
 export class CreateHeroForm extends React.Component{
@@ -32,6 +32,11 @@ export class CreateHeroForm extends React.Component{
 	setHeroName(heroInput){
 		console.log("hero input", heroInput.target.value)
 		this.props.dispatch(updateName(heroInput.target.value));
+	}
+
+	setPowers(key,powerInput){
+		console.log("power input", powerInput.target.value , key);
+		this.props.dispatch(updatePower(powerInput.target.value,key));
 	}
 
 	resetValues(event){
@@ -117,7 +122,7 @@ export class CreateHeroForm extends React.Component{
 		catch(err){
 			imageNames = [];
 		}
-		
+		console.log(this.props.cardPowers);
 		return(
 			
 			<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
@@ -192,6 +197,7 @@ export class CreateHeroForm extends React.Component{
 					name="heroSuperpower1"
 					options={superpowersData}
 					defaultText="Select a power"
+					onChange={this.setPowers.bind(this,"power1")}
 					validate={[required,nonEmpty]}>
 					
 				</Field>
@@ -201,6 +207,7 @@ export class CreateHeroForm extends React.Component{
 					name="heroSuperpower2"
 					options={superpowersData}
 					defaultText="Select a power"
+					onChange={this.setPowers.bind(this,"power2")}
 					validate={[required,nonEmpty]}>
 				</Field>
 				<label htmlFor="heroSuperpower3">Hero Super Power 3:</label>
@@ -209,6 +216,7 @@ export class CreateHeroForm extends React.Component{
 					name="heroSuperpower3"
 					options={superpowersData}
 					defaultText="Select a power"
+					onChange={this.setPowers.bind(this,"power3")}
 					validate={[required,nonEmpty]}>
 					
 				</Field>
@@ -225,9 +233,15 @@ export class CreateHeroForm extends React.Component{
 				  <img src={this.props.currentImage} alt="Avatar"/>
 				  <div className="container">
 				    <h4><b>{this.props.cardName}</b></h4> 
-				    <p>test stat</p> 
-				    <p>test stat</p> 
-				    <p>test stat</p> 
+				    <p>Health:{this.props.currentHero.heroHealth}</p> 
+				    <p>Ability Points:{this.props.currentHero.heroAbilityPoints}</p> 
+				    <p>Strength:{this.props.currentHero.heroStrength}</p> 
+				    <p>Toughness:{this.props.currentHero.heroToughness}</p> 
+				    <p>Agility:{this.props.currentHero.heroAgility}</p> 
+				    <p>Intelligence:{this.props.currentHero.heroSuperAbility}</p> 
+				    <p>Power1:{this.props.cardPowers.power1}</p>
+				    <p>Power2:{this.props.cardPowers.power2}</p>
+				    <p>Power3:{this.props.cardPowers.power3}</p>
 				  </div>
 				</div>
 				<button

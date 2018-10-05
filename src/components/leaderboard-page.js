@@ -12,7 +12,7 @@ export class LeaderboardPage extends React.Component{
 		this.props.dispatch(getLeaderboard());
     }
 	render(){
-		//console.log("here are the scores ",this.props.scores);
+		console.log("here are the scores ",this.props.scores);
 		let scoreData = [];
 		let error;
 		if (this.props.error) {
@@ -29,8 +29,8 @@ export class LeaderboardPage extends React.Component{
 						<td>{index + 1}</td>
 						<td>{score.username}</td>
 						<td>{score.wins}</td>
-						<td>{score.winRate}</td>
 						<td>{score.matches}</td>
+						<td>{score.winRate}%</td>
 					</tr>))
 			}
 		}

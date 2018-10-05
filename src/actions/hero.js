@@ -19,6 +19,13 @@ export const updateName = heroName => ({
 	heroName
 });
 
+export const UPDATE_POWER = "UPDATE_POWER";
+export const updatePower = (powerName,powerKey) => ({
+	type:UPDATE_POWER,
+	powerName,
+	powerKey
+});
+
 export const UPDATE_POINTS = "UPDATE_POINTS";
 export const updatePointsAction = (currentStat,currentVal) => ({
 	type:UPDATE_POINTS,
