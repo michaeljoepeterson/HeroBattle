@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {required,nonEmpty,isTrimmed} from '../validator';
 import Input from './input';
 import Select from './select';
-import {initPage,updatePointsAction,createHero,updateImage} from "../actions/hero";
+import {initPage,updatePointsAction,createHero,updateImage,updateName} from "../actions/hero";
 import {getPowers} from '../actions/superpowers';
 import './card.css';
 export class CreateHeroForm extends React.Component{
@@ -27,6 +27,11 @@ export class CreateHeroForm extends React.Component{
 			return this.props.dispatch(updateImage("default"));
 		}
 		this.props.dispatch(updateImage(imgVal.target.value));
+	}
+
+	setHeroName(heroInput){
+		console.log("hero input", heroInput.target.value)
+		this.props.dispatch(updateName(heroInput.target.value));
 	}
 
 	resetValues(event){
@@ -124,6 +129,7 @@ export class CreateHeroForm extends React.Component{
 					component={Input}
 					type="text"
 					name="heroName"
+					onChange={this.setHeroName.bind(this)}
 					validate={[required,nonEmpty,isTrimmed]}/>
 				<label htmlFor="heroHealth">Hero Health:</label>
 				<Field
@@ -218,7 +224,7 @@ export class CreateHeroForm extends React.Component{
 				<div className="center card">
 				  <img src={this.props.currentImage} alt="Avatar"/>
 				  <div className="container">
-				    <h4><b>test name</b></h4> 
+				    <h4><b>{this.props.cardName}</b></h4> 
 				    <p>test stat</p> 
 				    <p>test stat</p> 
 				    <p>test stat</p> 
@@ -246,7 +252,9 @@ const mapStateToProps = state => ({
     availablePoints: state.hero.currenthero.availablePoints,
     success:state.hero.message,
     currentImage: state.hero.currentImage,
-    imageList: state.hero.imageList
+    imageList: state.hero.imageList,
+    cardName:state.hero.heroName,
+    cardPowers:state.hero.powers
 });
 
 CreateHeroForm = connect(mapStateToProps)(CreateHeroForm);

@@ -13,6 +13,12 @@ export const updateImage = imageName => ({
 	imageName
 });
 
+export const UPDATE_NAME = "UPDATE_NAME";
+export const updateName = heroName => ({
+	type:UPDATE_NAME,
+	heroName
+});
+
 export const UPDATE_POINTS = "UPDATE_POINTS";
 export const updatePointsAction = (currentStat,currentVal) => ({
 	type:UPDATE_POINTS,

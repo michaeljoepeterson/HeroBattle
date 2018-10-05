@@ -8,13 +8,16 @@ import {
 	GET_HERO_SUCCESS,
 	GET_HERO_ERROR,
 	SET_BATTLE_HERO,
-	UPDATE_IMAGE
+	UPDATE_IMAGE,
+	UPDATE_NAME
 } from '../actions/hero';
 
 const initialState = {
 	loading:null,
 	error:null,
 	message:null,
+	heroName:null,
+	powers:[null,null,null],
 	currenthero:{
 		heroHealth:"100",
 		heroAbilityPoints:"100",
@@ -48,6 +51,8 @@ export default function reducer(state = initialState,action){
 		heroSuperAbility:"50",
 		availablePoints:"50"},
 		battleHero:null,
+		heroName:null,
+		powers:[null,null,null],
 		currentImage:"https://img00.deviantart.net/9141/i/2002/31/9/b/i_invented_the_question_mark.jpg"
         })
 	}
@@ -148,6 +153,12 @@ export default function reducer(state = initialState,action){
 		return Object.assign({}, state, {
 			
 			currentImage:state.imageList[action.imageName]
+        });
+	}
+	else if(action.type === UPDATE_NAME){
+		return Object.assign({}, state, {
+			
+			heroName:action.heroName
         });
 	}
 
