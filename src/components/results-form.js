@@ -16,19 +16,22 @@ export class ResultsForm extends React.Component{
 		console.log("results on results page", this.props.results);
         let resultData;
         let winner;
+        let winnerOpponent;
         try{
             if(this.props.results.hero1Wins > this.props.results.hero2Wins){
-                winner = (<p>{this.props.username} won with {this.props.battleHero.heroName}</p>
+                winner = (<p>Winner!</p>
                 );
+                winnerOpponent = null;
 
             }
             else if(this.props.results.hero1Wins < this.props.results.hero2Wins){
-                winner = (<p>{this.props.opponent.opponent.username} won with {this.props.opponent.heroOpponent.heroName}</p>
+                winnerOpponent = (<p>Winner!</p>
                 );
+                winner = null;
             }
             else{
                 winner = (<p>The battle was a draw!</p>)
-
+                winnerOpponent = (<p>The battle was a draw!</p>)
             }
         }
         catch(err){
@@ -76,11 +79,78 @@ export class ResultsForm extends React.Component{
         catch(err){
             resultData = null;
         }
+                let heroCard;
+        try{
+        if(this.props.battleHero){
+            
+            heroCard = (<div className="center card">
+                  <img src={this.props.battleHero.imageUrl} alt="Avatar"/>
+                  <div className="container">
+                    <h4><b>{this.props.battleHero.heroName}</b></h4> 
+                    <p>Health: {this.props.battleHero.health}</p> 
+                    <p>Ability Points: {this.props.battleHero.maxAbilityPoints}</p> 
+                    <p>Strength: {this.props.battleHero.strength}</p> 
+                    <p>Toughness: {this.props.battleHero.toughness}</p> 
+                    <p>Agility: {this.props.battleHero.agility}</p> 
+                    <p>Intelligence: {this.props.battleHero.superAbility}</p> 
+                    <p>Power1: {this.props.battleHero.superPowers[0].powerName}</p>
+                    <p>Power2: {this.props.battleHero.superPowers[1].powerName}</p>
+                    <p>Power3: {this.props.battleHero.superPowers[2].powerName}</p>
+                  </div>
+                </div>)
+        }
+        }
+        catch(err){
+            heroCard = null;
+        }
+
+        let opponentCard;
+        try{
+
+
+        if(this.props.opponent.heroOpponent){
+            
+            opponentCard = (<div className="center card">
+                  <img src={this.props.opponent.heroOpponent.imageUrl} alt="Avatar"/>
+                  <div className="container">
+                    <h4><b>{this.props.opponent.heroOpponent.heroName}</b></h4> 
+                    <p>Health: {this.props.opponent.heroOpponent.health}</p> 
+                    <p>Ability Points: {this.props.opponent.heroOpponent.maxAbilityPoints}</p> 
+                    <p>Strength: {this.props.opponent.heroOpponent.strength}</p> 
+                    <p>Toughness: {this.props.opponent.heroOpponent.toughness}</p> 
+                    <p>Agility: {this.props.opponent.heroOpponent.agility}</p> 
+                    <p>Intelligence: {this.props.opponent.heroOpponent.superAbility}</p> 
+                    <p>Power1: {this.props.opponent.heroOpponent.superPowers[0].powerName}</p>
+                    <p>Power2: {this.props.opponent.heroOpponent.superPowers[1].powerName}</p>
+                    <p>Power3: {this.props.opponent.heroOpponent.superPowers[2].powerName}</p>
+                  </div>
+                </div>)
+            }
+        }
+        catch(err){
+            opponentCard = null;
+        }
+        let createdBy;
+        try{
+            if(this.props.opponent){
+                createdBy = (
+                    <p>Created by {this.props.opponent.opponent.username}</p>
+                )
+            }
+        }
+        catch(err){
+            createdBy = null;
+        }
 		return(
             <div>
 			<h1>Results page</h1>
             {resultData}
             {winner}
+            {heroCard}
+            <h3>VS</h3>
+            {winnerOpponent}
+            {opponentCard}
+            {createdBy}
             <form>
                 <button onClick={(e)=>this.findMatch(e)}>
                     New Battle

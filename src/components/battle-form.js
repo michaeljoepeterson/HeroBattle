@@ -6,6 +6,7 @@ import Select from './select';
 import {getHero,setBattleHero} from "../actions/hero";
 import {getOpponent,startBattle} from "../actions/battle";
 import "./battleFormStyles.css";
+import './card.css';
 export class StartBattleForm extends React.Component{
 
 	componentDidMount() {
@@ -33,103 +34,77 @@ export class StartBattleForm extends React.Component{
 	}
     render(){
     	//make sure to add try block for when populating heroes like with superpowers
-		//console.log("hero list: ",this.props.heroes);
+		console.log("hero list: ",this.props.heroes);
 		//console.log("in render",this.props.battleHero);
 		console.log("in render opponent ",this.props.opponent);
-		//need to render this data
-		let heroData;
-		if(this.props.battleHero){
-			heroData=(
-				<div className="heroData">
-					<p>{this.props.battleHero.heroName}</p>
-					<p>{this.props.battleHero.heroName} Health:{this.props.battleHero.maxhealth}</p>
-					<p>{this.props.battleHero.heroName} Ability Points:{this.props.battleHero.maxAbilityPoints}</p>
-					<p>{this.props.battleHero.heroName} Strength:{this.props.battleHero.strength}</p>
-					<p>{this.props.battleHero.heroName} Toughness:{this.props.battleHero.toughness}</p>
-					<p>{this.props.battleHero.heroName} Intelligence:{this.props.battleHero.superAbility}</p>
-					<p>{this.props.battleHero.heroName} Agility:{this.props.battleHero.agility}</p>
-					<p>Powers:</p>
-					<p>{this.props.battleHero.superPowers[0].powerName}</p>
-					<ul className="powerList">
-						<li>Attack:{this.props.battleHero.superPowers[0].attack}
-						</li>
-						<li>Defence:{this.props.battleHero.superPowers[0].defense}
-						</li>
-						<li>Special Attack:{this.props.battleHero.superPowers[0].specialAttack}
-						</li>
-					</ul>
-					<p>{this.props.battleHero.superPowers[1].powerName}</p>
-					<ul className="powerList">
-						<li>Attack:{this.props.battleHero.superPowers[1].attack}
-						</li>
-						<li>Defence:{this.props.battleHero.superPowers[1].defense}
-						</li>
-						<li>Special Attack:{this.props.battleHero.superPowers[1].specialAttack}
-						</li>
-					</ul>
-					<p>{this.props.battleHero.superPowers[2].powerName}</p>
-					<ul className="powerList">
-						<li>Attack:{this.props.battleHero.superPowers[2].attack}
-						</li>
-						<li>Defence:{this.props.battleHero.superPowers[2].defense}
-						</li>
-						<li>Special Attack:{this.props.battleHero.superPowers[2].specialAttack}
-						</li>
-					</ul>
+		let blankCard = (
+				<div className="center card">
+				  <img src="https://img00.deviantart.net/9141/i/2002/31/9/b/i_invented_the_question_mark.jpg" alt="Avatar"/>
+				  <div className="container">
+				    <h4><b></b></h4> 
+				    <p>Health:</p> 
+				    <p>Ability Points:</p> 
+				    <p>Strength:</p> 
+				    <p>Toughness:</p> 
+				    <p>Agility:</p> 
+				    <p>Intelligence:</p> 
+				    <p>Power1:</p>
+				    <p>Power2:</p>
+				    <p>Power3:</p>
+				  </div>
 				</div>
 			);
+		//need to render this data
+		let heroCard = blankCard;
+		try{
+		if(this.props.battleHero){
+			
+			heroCard = (<div className="center card">
+				  <img src={this.props.battleHero.imageUrl} alt="Avatar"/>
+				  <div className="container">
+				    <h4><b>{this.props.battleHero.heroName}</b></h4> 
+				    <p>Health: {this.props.battleHero.health}</p> 
+				    <p>Ability Points: {this.props.battleHero.maxAbilityPoints}</p> 
+				    <p>Strength: {this.props.battleHero.strength}</p> 
+				    <p>Toughness: {this.props.battleHero.toughness}</p> 
+				    <p>Agility: {this.props.battleHero.agility}</p> 
+				    <p>Intelligence: {this.props.battleHero.superAbility}</p> 
+				    <p>Power1: {this.props.battleHero.superPowers[0].powerName}</p>
+				    <p>Power2: {this.props.battleHero.superPowers[1].powerName}</p>
+				    <p>Power3: {this.props.battleHero.superPowers[2].powerName}</p>
+				  </div>
+				</div>);
+		}
+		}
+		catch(err){
+			heroCard = blankCard;
 		}
 
-		let opponentData;
+		let opponentCard = blankCard;
 		try{
 
 
 		if(this.props.opponent.heroOpponent){
-			opponentData=(
-				<div className="heroData">
-					<p>VS</p>
-					<p>{this.props.opponent.heroOpponent.heroName}</p>
-					<p>{this.props.opponent.heroOpponent.heroName} Health:{this.props.opponent.heroOpponent.maxhealth}</p>
-					<p>{this.props.opponent.heroOpponent.heroName} Ability Points:{this.props.opponent.heroOpponent.maxAbilityPoints}</p>
-					<p>{this.props.opponent.heroOpponent.heroName} Strength:{this.props.opponent.heroOpponent.strength}</p>
-					<p>{this.props.opponent.heroOpponent.heroName} Toughness:{this.props.opponent.heroOpponent.toughness}</p>
-					<p>{this.props.opponent.heroOpponent.heroName} Intelligence:{this.props.opponent.heroOpponent.superAbility}</p>
-					<p>{this.props.opponent.heroOpponent.heroName} Agility:{this.props.opponent.heroOpponent.agility}</p>
-					<p>Powers:</p>
-					<p>{this.props.opponent.heroOpponent.superPowers[0].powerName}</p>
-					<ul className="powerList">
-						<li>Attack:{this.props.opponent.heroOpponent.superPowers[0].attack}
-						</li>
-						<li>Defence:{this.props.opponent.heroOpponent.superPowers[0].defense}
-						</li>
-						<li>Special Attack:{this.props.opponent.heroOpponent.superPowers[0].specialAttack}
-						</li>
-					</ul>
-					<p>{this.props.opponent.heroOpponent.superPowers[1].powerName}</p>
-					<ul className="powerList">
-						<li>Attack:{this.props.opponent.heroOpponent.superPowers[1].attack}
-						</li>
-						<li>Defence:{this.props.opponent.heroOpponent.superPowers[1].defense}
-						</li>
-						<li>Special Attack:{this.props.opponent.heroOpponent.superPowers[1].specialAttack}
-						</li>
-					</ul>
-					<p>{this.props.opponent.heroOpponent.superPowers[2].powerName}</p>
-					<ul className="powerList">
-						<li>Attack:{this.props.opponent.heroOpponent.superPowers[2].attack}
-						</li>
-						<li>Defence:{this.props.opponent.heroOpponent.superPowers[2].defense}
-						</li>
-						<li>Special Attack:{this.props.opponent.heroOpponent.superPowers[2].specialAttack}
-						</li>
-					</ul>
-					<p>Created By:{this.props.opponent.opponent.username}</p>
-				</div>
-			);
+			
+			opponentCard = (<div className="center card">
+				  <img src={this.props.opponent.heroOpponent.imageUrl} alt="Avatar"/>
+				  <div className="container">
+				    <h4><b>{this.props.opponent.heroOpponent.heroName}</b></h4> 
+				    <p>Health: {this.props.opponent.heroOpponent.health}</p> 
+				    <p>Ability Points: {this.props.opponent.heroOpponent.maxAbilityPoints}</p> 
+				    <p>Strength: {this.props.opponent.heroOpponent.strength}</p> 
+				    <p>Toughness: {this.props.opponent.heroOpponent.toughness}</p> 
+				    <p>Agility: {this.props.opponent.heroOpponent.agility}</p> 
+				    <p>Intelligence: {this.props.opponent.heroOpponent.superAbility}</p> 
+				    <p>Power1: {this.props.opponent.heroOpponent.superPowers[0].powerName}</p>
+				    <p>Power2: {this.props.opponent.heroOpponent.superPowers[1].powerName}</p>
+				    <p>Power3: {this.props.opponent.heroOpponent.superPowers[2].powerName}</p>
+				  </div>
+				</div>)
 			}
 		}
 		catch(err){
-			opponentData = null;
+			opponentCard = blankCard;
 		}
 
 		let error;
@@ -158,6 +133,17 @@ export class StartBattleForm extends React.Component{
 		catch(err){
 			createHeroMessage = null;
 		}
+		let createdBy;
+		try{
+			if(this.props.opponent){
+				createdBy = (
+					<p>Created by {this.props.opponent.opponent.username}</p>
+				)
+			}
+		}
+		catch(err){
+			createdBy = null;
+		}
 		return(
 			<div>
 			<h1>Select a Hero {this.props.username}</h1>
@@ -177,8 +163,10 @@ export class StartBattleForm extends React.Component{
 						Find Opponent
 					</button>
 					</div>
-					{heroData}
-					{opponentData}
+					{heroCard}
+					<h3>VS</h3>
+					{opponentCard}
+					{createdBy}
 					<button type="submit"
                     disabled={this.props.pristine || this.props.submitting || this.props.opponent === null}>
 						Battle!
