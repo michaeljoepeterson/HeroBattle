@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import {required,nonEmpty,isTrimmed} from '../validator';
 import Input from './input';
 import Select from './select';
-import {initPage,updatePointsAction,createHero} from "../actions/hero";
+import {initPage,updatePointsAction,createHero,updateImage} from "../actions/hero";
 import {getPowers} from '../actions/superpowers';
-
+import './card.css';
 export class CreateHeroForm extends React.Component{
 
 	componentDidMount() {
@@ -17,7 +17,16 @@ export class CreateHeroForm extends React.Component{
 
 	onSubmit(values) {
 		console.log("dispatch submit action",values);
-		return this.props.dispatch(createHero(values));
+		return this.props.dispatch(createHero(values,this.props.currentImage));
+	}
+
+	selectImage(imgVal){
+		console.log("image ", imgVal.target.value);
+		console.log("current image url ", this.props.currentImage);
+		if(!imgVal.target.value){
+			return this.props.dispatch(updateImage("default"));
+		}
+		this.props.dispatch(updateImage(imgVal.target.value));
 	}
 
 	resetValues(event){
@@ -32,6 +41,7 @@ export class CreateHeroForm extends React.Component{
 		this.props.change("heroSuperpower1","");
 		this.props.change("heroSuperpower2","");
 		this.props.change("heroSuperpower3","");
+		this.props.change("avatarSelect","");
 		this.props.dispatch(initPage());
 	}
 
@@ -87,6 +97,20 @@ export class CreateHeroForm extends React.Component{
 		}
 		catch(err){
 			superpowersData = [];
+		}
+
+		let imageNames = [];
+
+		try{
+			for(let key in this.props.imageList){
+				if (key === "default"){
+					continue;
+				}
+				imageNames.push(<option value={key} key={key}>{key}</option>);
+			}
+		}
+		catch(err){
+			imageNames = [];
 		}
 		
 		return(
@@ -182,6 +206,24 @@ export class CreateHeroForm extends React.Component{
 					validate={[required,nonEmpty]}>
 					
 				</Field>
+				<label htmlFor="avatarSelect">Avatar:</label>
+				<Field
+					component={Select}
+					name="avatarSelect"
+					options={imageNames}
+					defaultText="Select a Avatar"
+					onChange={this.selectImage.bind(this)}>
+					
+				</Field>
+				<div className="center card">
+				  <img src={this.props.currentImage} alt="Avatar"/>
+				  <div className="container">
+				    <h4><b>test name</b></h4> 
+				    <p>test stat</p> 
+				    <p>test stat</p> 
+				    <p>test stat</p> 
+				  </div>
+				</div>
 				<button
                     type="submit"
                     disabled={this.props.pristine || this.props.submitting}>
@@ -202,7 +244,9 @@ const mapStateToProps = state => ({
     powers: state.superpowers.powers, 
     powerNames: state.superpowers.powerNames,
     availablePoints: state.hero.currenthero.availablePoints,
-    success:state.hero.message
+    success:state.hero.message,
+    currentImage: state.hero.currentImage,
+    imageList: state.hero.imageList
 });
 
 CreateHeroForm = connect(mapStateToProps)(CreateHeroForm);

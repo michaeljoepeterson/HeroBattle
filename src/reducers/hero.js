@@ -7,7 +7,8 @@ import {
 	GET_HERO_REQUEST,
 	GET_HERO_SUCCESS,
 	GET_HERO_ERROR,
-	SET_BATTLE_HERO
+	SET_BATTLE_HERO,
+	UPDATE_IMAGE
 } from '../actions/hero';
 
 const initialState = {
@@ -24,7 +25,15 @@ const initialState = {
 		availablePoints:"50"
 	},
 	heroes:null,
-	battleHero:null
+	battleHero:null,
+	imageList:{
+		default:"https://img00.deviantart.net/9141/i/2002/31/9/b/i_invented_the_question_mark.jpg",
+		pikachu:"https://orig00.deviantart.net/7a90/f/2009/118/3/f/8_bit_art_by_ravenhayden.png",
+		ralph:"https://orig00.deviantart.net/ad19/f/2018/182/8/e/wreck_it_ralph_by_jarquin10-dcg0yg8.gif",
+		mike:"https://orig00.deviantart.net/8eec/f/2018/146/0/3/mike_wazowski_by_jarquin10-dccln5u.gif",
+		dt:"https://orig00.deviantart.net/4a68/f/2018/019/3/d/donald_trump__by_jarquin10-dc0ib3g.gif"
+	},
+	currentImage:"https://img00.deviantart.net/9141/i/2002/31/9/b/i_invented_the_question_mark.jpg"
 };
 
 export default function reducer(state = initialState,action){
@@ -38,7 +47,8 @@ export default function reducer(state = initialState,action){
 		heroAgility:"50",
 		heroSuperAbility:"50",
 		availablePoints:"50"},
-		battleHero:null
+		battleHero:null,
+		currentImage:"https://img00.deviantart.net/9141/i/2002/31/9/b/i_invented_the_question_mark.jpg"
         })
 	}
 	else if(action.type === UPDATE_POINTS){
@@ -123,7 +133,7 @@ export default function reducer(state = initialState,action){
 	}
 
 	else if(action.type === SET_BATTLE_HERO){
-		console.log("reducer hero",action.hero);
+		//console.log("reducer hero",action.hero);
 		if(action.key === -1){
 			return Object.assign({},state, {
 			battleHero:null
@@ -131,6 +141,13 @@ export default function reducer(state = initialState,action){
 		}
 		return Object.assign({}, state, {
 			battleHero:action.hero
+        });
+	}
+
+	else if(action.type === UPDATE_IMAGE){
+		return Object.assign({}, state, {
+			
+			currentImage:state.imageList[action.imageName]
         });
 	}
 

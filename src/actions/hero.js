@@ -7,6 +7,12 @@ export const initPage = () => ({
 	type:INITIALIZE_PAGE
 });
 
+export const UPDATE_IMAGE = "UPDATE_IMAGE";
+export const updateImage = imageName => ({
+	type:UPDATE_IMAGE,
+	imageName
+});
+
 export const UPDATE_POINTS = "UPDATE_POINTS";
 export const updatePointsAction = (currentStat,currentVal) => ({
 	type:UPDATE_POINTS,
@@ -62,7 +68,7 @@ export const setBattleHero = (hero,key) =>( {
 	hero,
 	key
 });
-export const createHero = (heroData) => (dispatch , getState) => {
+export const createHero = (heroData,imgUrl) => (dispatch , getState) => {
 	dispatch(createHeroRequest());
 	const authToken = getState().auth.authToken;
 	return(
@@ -84,7 +90,8 @@ export const createHero = (heroData) => (dispatch , getState) => {
 				superAbility:heroData.heroSuperAbility,
 				ability1:heroData.heroSuperpower1,
 				ability2:heroData.heroSuperpower2,
-				ability3:heroData.heroSuperpower3
+				ability3:heroData.heroSuperpower3,
+				imageUrl:imgUrl
 			})
 		})
 		.then(res => normalizeResponseErrors(res))
