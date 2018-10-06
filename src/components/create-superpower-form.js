@@ -58,35 +58,40 @@ export class CreatePowerForm extends React.Component{
 		return(
 			<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				<h1>Available Points {this.props.availablePoints}</h1>
+				<p>You can create your own superpowers here! Experiment with the different values and see what works best!</p>
 				{error}
 				{success}
-				<label htmlFor="powerName">Power Name:</label>
+				<label className="labelDefault" htmlFor="powerName">Power Name:</label>
 				<Field
 					component={Input}
+					className="defaultInput"
 					type="text"
 					name="powerName"
 					validate={[required,nonEmpty,isTrimmed]}/>
-				<label htmlFor="powerAttack">Superpower Attack:</label>
+				<label className="labelDefault" htmlFor="powerAttack">Superpower Attack:</label>
 				<Field
 					component={Input}
+					className="defaultInput"
 					type="number"
 					name="powerAttack"
 					normalize={this.normalizer.bind(this,"powerAttack")}
 					min="0"
 					max="100"
 					validate={[required,nonEmpty]}/>
-				<label htmlFor="powerDefence">SuperPower Defence:</label>
+				<label className="labelDefault" htmlFor="powerDefence">SuperPower Defence:</label>
 				<Field
 					component={Input}
+					className="defaultInput"
 					type="number"
 					name="powerDefence"
 					normalize={this.normalizer.bind(this,"powerDefence")}
 					min="0"
 					max="100"
 					validate={[required,nonEmpty]}/>
-				<label htmlFor="powerSpecialAttack">Superpower Special Attack:</label>
+				<label className="labelDefault" htmlFor="powerSpecialAttack">Superpower Special Attack:</label>
 				<Field
 					component={Input}
+					className="defaultInput"
 					type="number"
 					name="powerSpecialAttack"
 					normalize={this.normalizer.bind(this,"powerSpecialAttack")}
@@ -95,10 +100,13 @@ export class CreatePowerForm extends React.Component{
 					validate={[required,nonEmpty]}/>
 					<button
                     type="submit"
+                    className="buttonDefault" 
                     disabled={this.props.pristine || this.props.submitting}>
                     Submit
                 </button>
-                <button onClick={(e) => this.resetValues(e)}
+                <button
+                className="buttonDefault" 
+                onClick={(e) => this.resetValues(e)}
                     >
                     Reset
                 </button>

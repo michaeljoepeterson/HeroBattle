@@ -25,10 +25,10 @@ export class StartBattleForm extends React.Component{
 
     onSubmit(values) {
 		//console.log("dispatch submit action",values);
-		console.log("user hero",this.props.battleHero);
+		//console.log("user hero",this.props.battleHero);
 		console.log("user data",this.props.currentUser);
 		//console.log("opponent hero",this.props.opponent.heroOpponent);
-		//console.log("opponent data",this.props.opponent.opponent);
+		console.log("opponent data",this.props.opponent.opponent);
 
 		return this.props.dispatch(startBattle(this.props.battleHero,this.props.opponent.heroOpponent,this.props.currentUser,this.props.opponent.opponent))
 	}
@@ -150,27 +150,31 @@ export class StartBattleForm extends React.Component{
 				<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				{error}
 				{createHeroMessage}
+				<p>Here you can battle another random hero created by another user. Click the find opponent button select a hero and then battle! If you want to play against someone else you can find another opponent.</p>
+				<div className="centerButton">
+					<button className="battleButton" onClick={(e) => this.findOpponent(e)}>
+						Find Opponent
+					</button>
+					<button className="battleButton" type="submit"
+                    disabled={this.props.pristine || this.props.submitting || this.props.opponent === null}>
+						Battle!
+					</button>
+					</div>
 				<label htmlFor="heroSelect">Hero</label>
 					<Field
 					component={Select}
 					name="heroSelect"
+					className="selectHero"
 					options={heroesData}
 					defaultText="Select a hero"
 					onChange={this.selectHero.bind(this)}
 					validate={[required,nonEmpty]}/>
-					<div className="centerButton">
-					<button onClick={(e) => this.findOpponent(e)}>
-						Find Opponent
-					</button>
-					</div>
+					
 					{heroCard}
 					<h3>VS</h3>
 					{opponentCard}
 					{createdBy}
-					<button type="submit"
-                    disabled={this.props.pristine || this.props.submitting || this.props.opponent === null}>
-						Battle!
-					</button>
+					
 				</form>
 				
 			</div>

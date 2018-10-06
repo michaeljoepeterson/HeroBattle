@@ -126,64 +126,72 @@ export class CreateHeroForm extends React.Component{
 		return(
 			
 			<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-				<h1>available Points {this.props.availablePoints}</h1>
+				<h1>Available Points {this.props.availablePoints}</h1>
+				<p>Create your own hero here! Create anybody you want, be creative! Each of the stats affects a different aspect of the character and how effective that character is with different super abilities. Try and find the best combination of stats and super powers!</p>
 				{error}
 				{success}
-				<label htmlFor="heroName">Hero Name:</label>
+				<label className="labelDefault"htmlFor="heroName">Hero Name:</label>
 				<Field
 					component={Input}
+					className="defaultInput"
 					type="text"
 					name="heroName"
 					onChange={this.setHeroName.bind(this)}
 					validate={[required,nonEmpty,isTrimmed]}/>
-				<label htmlFor="heroHealth">Hero Health:</label>
+				<label className="labelDefault" htmlFor="heroHealth">Hero Health:</label>
 				<Field
 					component={Input}
+					className="defaultInput"
 					type="number"
 					name="heroHealth"
 					normalize={this.oneHundredNormalizer.bind(this,"heroHealth")}
 					min="100"
 					max="150"
 					validate={[required,nonEmpty]}/>
-				<label htmlFor="heroAbilityPoints">Hero Ability Points:</label>
+				<label className="labelDefault" htmlFor="heroAbilityPoints">Hero Ability Points:</label>
 				<Field
 					component={Input}
+					className="defaultInput"
 					type="number"
 					name="heroAbilityPoints"
 					normalize={this.oneHundredNormalizer.bind(this,"heroAbilityPoints")}
 					min="100"
 					max="150"
 					validate={[required,nonEmpty]}/>
-				<label htmlFor="heroStrength">Hero Strength:</label>
+				<label className="labelDefault" htmlFor="heroStrength">Hero Strength:</label>
 				<Field
 					component={Input}
+					className="defaultInput"
 					type="number"
 					name="heroStrength"
 					normalize={this.fiftyNormalizer.bind(this,"heroStrength")}
 					min="50"
 					max="100"
 					validate={[required,nonEmpty]}/>
-				<label htmlFor="heroToughness">Hero Toughness:</label>
+				<label className="labelDefault" htmlFor="heroToughness">Hero Toughness:</label>
 				<Field
 					component={Input}
+					className="defaultInput"
 					type="number"
 					name="heroToughness"
 					normalize={this.fiftyNormalizer.bind(this,"heroToughness")}
 					min="50"
 					max="100"
 					validate={[required,nonEmpty]}/>
-				<label htmlFor="heroAgility">Hero Agility:</label>
+				<label className="labelDefault" htmlFor="heroAgility">Hero Agility:</label>
 				<Field
 					component={Input}
 					type="number"
+					className="defaultInput"
 					name="heroAgility"
 					normalize={this.fiftyNormalizer.bind(this,"heroAgility")}
 					min="50"
 					max="100"
 					validate={[required,nonEmpty]}/>
-				<label htmlFor="heroSuperAbility">Hero Intelligence:</label>
+				<label className="labelDefault" htmlFor="heroSuperAbility">Hero Intelligence:</label>
 				<Field
 					component={Input}
+					className="defaultInput"
 					type="number"
 					name="heroSuperAbility"
 					normalize={this.fiftyNormalizer.bind(this,"heroSuperAbility")}
@@ -191,9 +199,10 @@ export class CreateHeroForm extends React.Component{
 					max="100"
 					validate={[required,nonEmpty]}/>
 
-				<label htmlFor="heroSuperpower1">Hero Super Power 1:</label>
+				<label className="labelDefault" htmlFor="heroSuperpower1">Hero Super Power 1:</label>
 				<Field
 					component={Select}
+					className="defaultInput"
 					name="heroSuperpower1"
 					options={superpowersData}
 					defaultText="Select a power"
@@ -201,18 +210,20 @@ export class CreateHeroForm extends React.Component{
 					validate={[required,nonEmpty]}>
 					
 				</Field>
-				<label htmlFor="heroSuperpower2">Hero Super Power 2:</label>
+				<label className="labelDefault" htmlFor="heroSuperpower2">Hero Super Power 2:</label>
 				<Field
 					component={Select}
+					className="defaultInput"
 					name="heroSuperpower2"
 					options={superpowersData}
 					defaultText="Select a power"
 					onChange={this.setPowers.bind(this,"power2")}
 					validate={[required,nonEmpty]}>
 				</Field>
-				<label htmlFor="heroSuperpower3">Hero Super Power 3:</label>
+				<label className="labelDefault" htmlFor="heroSuperpower3">Hero Super Power 3:</label>
 				<Field
 					component={Select}
+					className="defaultInput"
 					name="heroSuperpower3"
 					options={superpowersData}
 					defaultText="Select a power"
@@ -220,9 +231,10 @@ export class CreateHeroForm extends React.Component{
 					validate={[required,nonEmpty]}>
 					
 				</Field>
-				<label htmlFor="avatarSelect">Avatar:</label>
+				<label className="labelDefault" htmlFor="avatarSelect">Avatar:</label>
 				<Field
 					component={Select}
+					className="defaultInput"
 					name="avatarSelect"
 					options={imageNames}
 					defaultText="Select a Avatar"
@@ -245,11 +257,14 @@ export class CreateHeroForm extends React.Component{
 				  </div>
 				</div>
 				<button
+				className="buttonDefault"
                     type="submit"
                     disabled={this.props.pristine || this.props.submitting}>
                     Submit
                 </button>
-                <button onClick={(e) => this.resetValues(e)}
+                <button
+                className="buttonDefault"
+                onClick={(e) => this.resetValues(e)}
                     >
                     Reset
                 </button>
