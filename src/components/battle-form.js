@@ -39,11 +39,13 @@ export class StartBattleForm extends React.Component{
 		console.log("in render opponent ",this.props.opponent);
 		let blankCard = (
 				<div className="center card">
+				<p className="cardTop">Health:</p>
+				<p className="cardTop">Ability Points:</p> 
+				<div className="cardImage">
 				  <img src="https://img00.deviantart.net/9141/i/2002/31/9/b/i_invented_the_question_mark.jpg" alt="Avatar"/>
+				 </div>
 				  <div className="container">
 				    <h4><b></b></h4> 
-				    <p>Health:</p> 
-				    <p>Ability Points:</p> 
 				    <p>Strength:</p> 
 				    <p>Toughness:</p> 
 				    <p>Agility:</p> 
@@ -60,11 +62,15 @@ export class StartBattleForm extends React.Component{
 		if(this.props.battleHero){
 			
 			heroCard = (<div className="center card">
+				<div className="cardHeader">
+				<h4><b>{this.props.battleHero.heroName}</b></h4>
+				</div>
+				<p className="cardTop">Health: {this.props.battleHero.health}</p>
+				<p className="cardTop">Ability Points: {this.props.battleHero.maxAbilityPoints}</p> 
+				<div className="cardImage"> 
 				  <img src={this.props.battleHero.imageUrl} alt="Avatar"/>
+				 </div>
 				  <div className="container">
-				    <h4><b>{this.props.battleHero.heroName}</b></h4> 
-				    <p>Health: {this.props.battleHero.health}</p> 
-				    <p>Ability Points: {this.props.battleHero.maxAbilityPoints}</p> 
 				    <p>Strength: {this.props.battleHero.strength}</p> 
 				    <p>Toughness: {this.props.battleHero.toughness}</p> 
 				    <p>Agility: {this.props.battleHero.agility}</p> 
@@ -87,11 +93,15 @@ export class StartBattleForm extends React.Component{
 		if(this.props.opponent.heroOpponent){
 			
 			opponentCard = (<div className="center card">
+			<div className="cardHeader">
+				<h4><b>{this.props.opponent.heroOpponent.heroName}</b></h4>
+			</div>
+				<p className="cardTop">Health: {this.props.opponent.heroOpponent.health}</p> 
+				    <p className="cardTop">Ability Points: {this.props.opponent.heroOpponent.maxAbilityPoints}</p> 
+				<div className="cardImage">
 				  <img src={this.props.opponent.heroOpponent.imageUrl} alt="Avatar"/>
+				  </div>
 				  <div className="container">
-				    <h4><b>{this.props.opponent.heroOpponent.heroName}</b></h4> 
-				    <p>Health: {this.props.opponent.heroOpponent.health}</p> 
-				    <p>Ability Points: {this.props.opponent.heroOpponent.maxAbilityPoints}</p> 
 				    <p>Strength: {this.props.opponent.heroOpponent.strength}</p> 
 				    <p>Toughness: {this.props.opponent.heroOpponent.toughness}</p> 
 				    <p>Agility: {this.props.opponent.heroOpponent.agility}</p> 
@@ -146,11 +156,11 @@ export class StartBattleForm extends React.Component{
 		}
 		return(
 			<div>
-			<h1>Select a Hero {this.props.username}</h1>
+			<h1 className="pageHeader">Select a Hero {this.props.username}</h1>
 				<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				{error}
 				{createHeroMessage}
-				<p>Here you can battle another random hero created by another user. Click the find opponent button select a hero and then battle! If you want to play against someone else you can find another opponent.</p>
+				<p className="pageInfo">Here you can battle another random hero created by another user. Click the find opponent button select a hero and then battle! If you want to play against someone else you can find another opponent.</p>
 				<div className="centerButton">
 					<button className="battleButton" onClick={(e) => this.findOpponent(e)}>
 						Find Opponent

@@ -1,0 +1,7 @@
+html,body{
+	background: linear-gradient(rgba(255, 255, 255, 0.5),rgba(255, 255, 255, 0.5)), url("https://image.freepik.com/free-vector/comic-versus-fight-battle-background_1017-15141.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+  	background-size: cover;
+}
