@@ -41,7 +41,7 @@ export class LeaderboardPage extends React.Component{
 			<div>
 				<Navbar />
 				<div className="home box center">
-				<h1>Top Players</h1>
+				<h1 className="pageHeader">Top Players</h1>
 				{error}
 				<div className="responsiveTable">
 					<table className="defaultTable centerTable">

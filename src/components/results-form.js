@@ -15,18 +15,21 @@ export class ResultsForm extends React.Component{
         //css card display for heroes
 		console.log("results on results page", this.props.results);
         let resultData;
+        let winText;
         let winner;
         let winnerOpponent;
         try{
             if(this.props.results.hero1Wins > this.props.results.hero2Wins){
-                winner = (<p>Winner!</p>
+                winner = (<p className="winText">Winner!</p>
                 );
+                winText = (<p className="pageInfo">{this.props.battleHero.heroName} won!</p>);
                 winnerOpponent = null;
 
             }
             else if(this.props.results.hero1Wins < this.props.results.hero2Wins){
-                winnerOpponent = (<p>Winner!</p>
+                winnerOpponent = (<p className="winText">Winner!</p>
                 );
+                winText = (<p className="pageInfo">{this.props.opponent.heroOpponent.heroName} won!</p>);
                 winner = null;
             }
             else{
@@ -40,8 +43,9 @@ export class ResultsForm extends React.Component{
         try{
             if(this.props.results){
                resultData = (<div>
-                <p>Match Results</p>
-                <p> {this.props.battleHero.heroName} created by {this.props.username} vs {this.props.opponent.heroOpponent.heroName} created by {this.props.opponent.opponent.username}</p>
+                <h1 className="pageHeader">Match Results</h1>
+                <p className="pageInfo"> {this.props.battleHero.heroName} created by {this.props.username} vs {this.props.opponent.heroOpponent.heroName} created by {this.props.opponent.opponent.username}</p>
+                {winText}
                 <div className="responsiveTable">
                 <table className="defaultTable">
                     <tbody>
@@ -84,11 +88,15 @@ export class ResultsForm extends React.Component{
         if(this.props.battleHero){
             
             heroCard = (<div className="center card">
+                <div className="cardHeader">
+                <h4><b>{this.props.battleHero.heroName}</b></h4> 
+                </div>
+                <p className="cardTop">Health: {this.props.battleHero.health}</p> 
+                <p className="cardTop">Ability Points: {this.props.battleHero.maxAbilityPoints}</p> 
+                <div className="cardImage"> 
                   <img src={this.props.battleHero.imageUrl} alt="Avatar"/>
+                </div>
                   <div className="container">
-                    <h4><b>{this.props.battleHero.heroName}</b></h4> 
-                    <p>Health: {this.props.battleHero.health}</p> 
-                    <p>Ability Points: {this.props.battleHero.maxAbilityPoints}</p> 
                     <p>Strength: {this.props.battleHero.strength}</p> 
                     <p>Toughness: {this.props.battleHero.toughness}</p> 
                     <p>Agility: {this.props.battleHero.agility}</p> 
@@ -111,11 +119,15 @@ export class ResultsForm extends React.Component{
         if(this.props.opponent.heroOpponent){
             
             opponentCard = (<div className="center card">
+                <div className="cardHeader">
+                    <h4><b>{this.props.opponent.heroOpponent.heroName}</b></h4>
+                </div>
+                <p className="cardTop">Health: {this.props.opponent.heroOpponent.health}</p> 
+                <p className="cardTop">Ability Points: {this.props.opponent.heroOpponent.maxAbilityPoints}</p>
+                <div className="cardImage"> 
                   <img src={this.props.opponent.heroOpponent.imageUrl} alt="Avatar"/>
+                </div>
                   <div className="container">
-                    <h4><b>{this.props.opponent.heroOpponent.heroName}</b></h4> 
-                    <p>Health: {this.props.opponent.heroOpponent.health}</p> 
-                    <p>Ability Points: {this.props.opponent.heroOpponent.maxAbilityPoints}</p> 
                     <p>Strength: {this.props.opponent.heroOpponent.strength}</p> 
                     <p>Toughness: {this.props.opponent.heroOpponent.toughness}</p> 
                     <p>Agility: {this.props.opponent.heroOpponent.agility}</p> 
@@ -143,7 +155,6 @@ export class ResultsForm extends React.Component{
         }
 		return(
             <div>
-			<h1>Results page</h1>
             {resultData}
             {winner}
             {heroCard}

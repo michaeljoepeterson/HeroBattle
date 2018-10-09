@@ -28,7 +28,7 @@ export class StatsPage extends React.Component{
 		try{
 			if(this.props.stats){
 				totalStats = (
-					<div>
+					<div className="pageInfo">
 					<p>Wins:{this.props.wins}</p>
 					<p>Losses:{this.props.matches - this.props.wins}</p>
 					<p>Matches:{this.props.matches}</p>
@@ -62,7 +62,7 @@ export class StatsPage extends React.Component{
 			<div>
 				<Navbar/>
 				<div className="home box center">
-				<h1>Here are your stats {this.props.username}</h1>
+				<h1 className="pageHeader">Here are your stats {this.props.username}</h1>
 				{totalStats}
 				{error}
 				<div className="responsiveTable">

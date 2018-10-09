@@ -3,6 +3,8 @@
 }
 .defaultTable{
 	border-collapse: collapse;
+	font-family: 'Russo One', sans-serif;
+	margin: 10px;
 }
 .centerTable{
 	margin-left:auto; 
@@ -10,4 +12,5 @@
 }
 table,th,td{
 	border: 1px solid black;
+	padding:10px;
 }

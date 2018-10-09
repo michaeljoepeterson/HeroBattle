@@ -57,8 +57,8 @@ export class CreatePowerForm extends React.Component{
 	        }
 		return(
 			<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-				<h1>Available Points {this.props.availablePoints}</h1>
-				<p>You can create your own superpowers here! Experiment with the different values and see what works best!</p>
+				<h1 className="pageHeader">Available Points {this.props.availablePoints}</h1>
+				<p className="pageInfo">You can create your own superpowers here! Experiment with the different values and see what works best!</p>
 				{error}
 				{success}
 				<label className="labelDefault" htmlFor="powerName">Power Name:</label>

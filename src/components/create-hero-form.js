@@ -126,8 +126,8 @@ export class CreateHeroForm extends React.Component{
 		return(
 			
 			<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-				<h1>Available Points {this.props.availablePoints}</h1>
-				<p>Create your own hero here! Create anybody you want, be creative! Each of the stats affects a different aspect of the character and how effective that character is with different super abilities. Try and find the best combination of stats and super powers!</p>
+				<h1 className="pageHeader">Available Points {this.props.availablePoints}</h1>
+				<p className="pageInfo">Create your own hero here! Create anybody you want, be creative! Each of the stats affects a different aspect of the character and how effective that character is with different super abilities. Try and find the best combination of stats and super powers!</p>
 				{error}
 				{success}
 				<label className="labelDefault"htmlFor="heroName">Hero Name:</label>
@@ -242,11 +242,15 @@ export class CreateHeroForm extends React.Component{
 					
 				</Field>
 				<div className="center card">
+				<div className="cardHeader">
+				<h4><b>{this.props.cardName}</b></h4>
+				</div>
+				<p className="cardTop">Health:{this.props.currentHero.heroHealth}</p> 
+				<p className="cardTop">Ability Points:{this.props.currentHero.heroAbilityPoints}</p> 
+				<div className="cardImage"> 
 				  <img src={this.props.currentImage} alt="Avatar"/>
+				</div>
 				  <div className="container">
-				    <h4><b>{this.props.cardName}</b></h4> 
-				    <p>Health:{this.props.currentHero.heroHealth}</p> 
-				    <p>Ability Points:{this.props.currentHero.heroAbilityPoints}</p> 
 				    <p>Strength:{this.props.currentHero.heroStrength}</p> 
 				    <p>Toughness:{this.props.currentHero.heroToughness}</p> 
 				    <p>Agility:{this.props.currentHero.heroAgility}</p> 
