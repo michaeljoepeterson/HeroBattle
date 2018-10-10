@@ -39,7 +39,14 @@ const initialState = {
 		pikachu:"https://orig00.deviantart.net/7a90/f/2009/118/3/f/8_bit_art_by_ravenhayden.png",
 		ralph:"https://orig00.deviantart.net/ad19/f/2018/182/8/e/wreck_it_ralph_by_jarquin10-dcg0yg8.gif",
 		mike:"https://orig00.deviantart.net/8eec/f/2018/146/0/3/mike_wazowski_by_jarquin10-dccln5u.gif",
-		dt:"https://orig00.deviantart.net/4a68/f/2018/019/3/d/donald_trump__by_jarquin10-dc0ib3g.gif"
+		dt:"https://orig00.deviantart.net/4a68/f/2018/019/3/d/donald_trump__by_jarquin10-dc0ib3g.gif",
+		mugman:"https://orig00.deviantart.net/ffd9/f/2018/184/f/d/mugman_by_jarquin10-dcg6tr6.gif",
+		wallE:"https://orig00.deviantart.net/f5ad/f/2018/181/6/e/wall_e_and_eve_by_jarquin10-dcfw5a3.gif",
+		chibi:"https://orig00.deviantart.net/7bd8/f/2014/071/b/6/chibi_robo_sprite_by_jarquin10-d79y7yg.gif",
+		stitch:"https://orig00.deviantart.net/fde0/f/2018/217/7/d/stitch_by_jarquin10-dcjaqi2.gif",
+		baymax:"https://orig00.deviantart.net/91ad/f/2017/203/8/e/baymax_by_jarquin10-dbhbdiv.gif",
+		sully:"https://orig00.deviantart.net/c453/f/2018/146/a/f/sulley_and_boo_by_jarquin10-dcclmlo.gif"
+
 	},
 	currentImage:"https://img00.deviantart.net/9141/i/2002/31/9/b/i_invented_the_question_mark.jpg"
 };
