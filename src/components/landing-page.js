@@ -12,7 +12,7 @@ export function LandingPage(props){
     
 	return (
         <div className="home box center">
-            <h1 className="pageHeader">Welcome to the hero battle simulator!</h1>
+            <h1 className="pageHeader">Welcome to Hero Battle!</h1>
             <p className="pageInfo">This app allows you to create a character and battle other player created heroes! The characters can be anything you want, a hero from a tv series or your neighbour that just won't cut the grass, be creative. Start by creating a character and assigning them powers created by other user. You can even build your own superpowers! For a demo account try username:demouser and password:demopassword.</p>
             
             <LoginForm />

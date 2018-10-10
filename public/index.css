@@ -1,8 +1,15 @@
-html,body{
-	background: url("https://image.freepik.com/free-vector/comic-versus-fight-battle-background_1017-15141.jpg");
-	background: linear-gradient(rgba(255, 255, 255, 0.5),rgba(255, 255, 255, 0.5)), url("https://image.freepik.com/free-vector/comic-versus-fight-battle-background_1017-15141.jpg");
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-attachment: fixed;
-  	background-size: cover;
+body:before {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background: linear-gradient(rgba(255, 255, 255, 0.5),rgba(255, 255, 255, 0.5)),url("https://image.freepik.com/free-vector/comic-versus-fight-battle-background_1017-15141.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
