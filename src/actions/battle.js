@@ -66,7 +66,6 @@ export const getOpponent =(username)=>(dispatch,getState)=>{
 			}
 		)
 		.then(res => {
-			//console.log(res);
 			return res.json()
 		})
 		.then(data => {

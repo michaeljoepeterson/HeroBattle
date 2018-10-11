@@ -16,13 +16,11 @@ export class CreateHeroForm extends React.Component{
 
 
 	onSubmit(values) {
-		console.log("dispatch submit action",values);
+
 		return this.props.dispatch(createHero(values,this.props.currentImage));
 	}
 
 	selectImage(imgVal){
-		console.log("image ", imgVal.target.value);
-		console.log("current image url ", this.props.currentImage);
 		if(!imgVal.target.value){
 			return this.props.dispatch(updateImage("default"));
 		}
@@ -30,12 +28,12 @@ export class CreateHeroForm extends React.Component{
 	}
 
 	setHeroName(heroInput){
-		console.log("hero input", heroInput.target.value)
+
 		this.props.dispatch(updateName(heroInput.target.value));
 	}
 
 	setPowers(key,powerInput){
-		console.log("power input", powerInput.target.value , key);
+
 		this.props.dispatch(updatePower(powerInput.target.value,key));
 	}
 
@@ -56,10 +54,8 @@ export class CreateHeroForm extends React.Component{
 	}
 
 	oneHundredNormalizer(key,value){
-		//console.log("value in normalizer", value);
+
 		this.props.dispatch(updatePointsAction(key,value));
-		//console.log(this.props.availablePoints);
-		//console.log("normalizer hero",this.props.currentHero);
 
 		if(parseInt(this.props.availablePoints,10) === 0){
 			return String(this.props.currentHero[key])
@@ -72,7 +68,6 @@ export class CreateHeroForm extends React.Component{
 	}
 
 	fiftyNormalizer(key,value){
-		//console.log("value in normalizer", value);
 		this.props.dispatch(updatePointsAction(key,value));
 		if(parseInt(this.props.availablePoints,10) === 0){
 			return String(this.props.currentHero[key])
@@ -122,7 +117,6 @@ export class CreateHeroForm extends React.Component{
 		catch(err){
 			imageNames = [];
 		}
-		console.log(this.props.cardPowers);
 		return(
 			
 			<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>

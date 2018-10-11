@@ -12,7 +12,6 @@ export class CreatePowerForm extends React.Component{
     }
 
 	onSubmit(values){
-		console.log("dispatch values",values);
 		return this.props.dispatch(createPower(values));
 	}
 

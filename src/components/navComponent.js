@@ -12,12 +12,9 @@ import {clearAuthToken} from '../local-storage';
 export class Navbar extends React.Component{
 
     logOut() {
-        //action that clears all auth info for user
-        //see auth reducer
+
         this.props.dispatch(clearAuth());
-        //remove auth token from local storage
         clearAuthToken();
-        //console.log("logout");
     }
 
 	render(){

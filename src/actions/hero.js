@@ -112,7 +112,6 @@ export const createHero = (heroData,imgUrl) => (dispatch , getState) => {
 		.then(data => dispatch(createHeroSuccess()))
 		.catch(err => {
 			dispatch(createHeroError(err));
-			console.log("submit error",err);
 			let message = "an error occured";
 			if(err.reason && err.reason === "ValidationError"){
 				message = err.message;
@@ -145,7 +144,6 @@ export const getHero = (userId) => (dispatch , getState) => {
 			}
 		)
 		.then(res => {
-			//console.log(res);
 			return res.json()
 		})
 		.then(data => {

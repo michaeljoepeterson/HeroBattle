@@ -19,7 +19,6 @@ const initialState = {
 
 export default function reducer(state = initialState,action){
 	if(action.type === INITIALIZE_PAGE){
-		//console.log("hero reducer called",state);
 		return Object.assign({}, state, {
 			userStats:{
 				winRate:null,
@@ -45,7 +44,6 @@ export default function reducer(state = initialState,action){
 	}
 
 	else if(action.type === GET_STATS_SUCCESS){
-		//console.log("reducer stats ",action.userStats)
 		return Object.assign({}, state, {
 			loading:false,
 			userStats:action.userStats,

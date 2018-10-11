@@ -53,9 +53,8 @@ const initialState = {
 
 export default function reducer(state = initialState,action){
 	if(action.type === INITIALIZE_PAGE){
-		//console.log("hero reducer called",state);
 		return Object.assign({}, state, {
-			currenthero:{heroHealth:"100",
+		currenthero:{heroHealth:"100",
 		heroAbilityPoints:"100",
 		heroStrength:"50",
 		heroToughness:"50",
@@ -74,9 +73,9 @@ export default function reducer(state = initialState,action){
 	}
 	else if(action.type === UPDATE_POINTS){
 
-		//rest operator
+
 		let newHeroStats = Object.assign({},state.currenthero);
-		//console.log("state in reducer",state,newHeroStats);
+
 		
 		let sum = 0;
 		for (let key in newHeroStats){
@@ -87,8 +86,6 @@ export default function reducer(state = initialState,action){
 		}
 
 		let newAvailablePoints = String(450 - sum);
-		//console.log("the reducer sum",sum);
-		//console.log("the availablePoints", newAvailablePoints)
 		if(newAvailablePoints <= 0){
 			newAvailablePoints = 0
 			newHeroStats.availablePoints = newAvailablePoints;
@@ -99,10 +96,8 @@ export default function reducer(state = initialState,action){
 		else if (newAvailablePoints > 50){
 			newAvailablePoints = 50;
 		}
-		//else if()
 		newHeroStats.availablePoints = newAvailablePoints;
 		newHeroStats[action.currentStat] = action.currentVal;
-		//console.log("new hero stats from reducer", newHeroStats);
 		return Object.assign({}, state, {
 			currenthero:newHeroStats
         });
@@ -154,7 +149,6 @@ export default function reducer(state = initialState,action){
 	}
 
 	else if(action.type === SET_BATTLE_HERO){
-		//console.log("reducer hero",action.hero);
 		if(action.key === -1){
 			return Object.assign({},state, {
 			battleHero:null

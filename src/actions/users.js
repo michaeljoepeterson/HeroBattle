@@ -14,13 +14,16 @@ export const registerUser = user => dispatch => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .catch(err => {
-            const {reason, message, location} = err;
-            if (reason === 'ValidationError') {
+            let message = "an error occured";
+            if(err.reason && err.reason === "ValidationError"){
+                    message = err.message;
+                }
+
                 return Promise.reject(
                     new SubmissionError({
-                        [location]: message
+                        _error: message
                     })
                 );
-            }
+
         });
 };

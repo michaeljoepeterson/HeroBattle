@@ -68,7 +68,6 @@ export const getPowers = () => (dispatch , getState) => {
 			}
 		)
 		.then(res => {
-			//console.log(res);
 			return res.json()
 		})
 		.then(data => {

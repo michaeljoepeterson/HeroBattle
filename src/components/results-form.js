@@ -12,8 +12,7 @@ export class ResultsForm extends React.Component{
         this.props.dispatch(initPageBattle());
     }
 	render(){
-        //css card display for heroes
-		console.log("results on results page", this.props.results);
+
         let resultData;
         let winText;
         let winner;

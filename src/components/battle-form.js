@@ -19,24 +19,16 @@ export class StartBattleForm extends React.Component{
     }
     findOpponent(event){
     	event.preventDefault();
-    	//console.log("find opponent",this.props.username);
+
     	this.props.dispatch(getOpponent(this.props.username));
     }
 
     onSubmit(values) {
-		//console.log("dispatch submit action",values);
-		//console.log("user hero",this.props.battleHero);
-		console.log("user data",this.props.currentUser);
-		//console.log("opponent hero",this.props.opponent.heroOpponent);
-		console.log("opponent data",this.props.opponent.opponent);
 
 		return this.props.dispatch(startBattle(this.props.battleHero,this.props.opponent.heroOpponent,this.props.currentUser,this.props.opponent.opponent))
 	}
     render(){
-    	//make sure to add try block for when populating heroes like with superpowers
-		console.log("hero list: ",this.props.heroes);
-		//console.log("in render",this.props.battleHero);
-		console.log("in render opponent ",this.props.opponent);
+
 		let blankCard = (
 				<div className="center card">
 				<p className="cardTop">Health:</p>

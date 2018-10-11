@@ -14,14 +14,13 @@ const initialState = {
 
 export default function reducer(state = initialState,action){
 	if(action.type === INITIALIZE_PAGE){
-		//console.log("hero reducer called",state);
 		return Object.assign({}, state, {
 			scores:null
         })
 	}
 
 	else if(action.type === GET_LEADERBOARD_REQUEST){
-		console.log("get leaderboard request");
+
 		return Object.assign({}, state, {
             loading: true,
             error:null,
@@ -31,8 +30,6 @@ export default function reducer(state = initialState,action){
 	}
 
 	else if(action.type === GET_LEADERBOARD_SUCCESS){
-		console.log("action leaderboard", action.powers);
-		//console.log("powers name arr in action",powerNamesArr);
 		return Object.assign({}, state, {
 			loading:false,
 			scores:action.scores,
@@ -41,7 +38,6 @@ export default function reducer(state = initialState,action){
         });
 	}
 	else if(action.type === GET_LEADERBOARD_ERROR){
-		console.log("leaderboard error");
 		return Object.assign({}, state, {
 			loading:false,
             error: "an error occured",

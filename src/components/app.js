@@ -9,8 +9,40 @@ import CreatePowerPage from './create-superpower-page';
 import StartBattlePage from './battle-page';
 import LeaderboardPage from './leaderboard-page';
 import StatsPage from './stats-page';
-import './loader.css'
+import './loader.css';
+import {refreshAuthToken} from '../actions/auth';
 export class App extends React.Component {
+        componentDidUpdate(prevProps) {
+        //if the user logged in start refresh
+        if (!prevProps.loggedIn && this.props.loggedIn) {
+            // When we are logged in, refresh the auth token periodically
+            this.startPeriodicRefresh();
+        } else if (prevProps.loggedIn && !this.props.loggedIn) {
+
+            this.stopPeriodicRefresh();
+        }
+    }
+
+    componentWillUnmount() {
+        this.stopPeriodicRefresh();
+    }
+
+    startPeriodicRefresh() {
+        console.log("getting new auth token");
+        this.refreshInterval = setInterval(
+            () => this.props.dispatch(refreshAuthToken()),
+            60 * 30 * 1000
+        );
+    }
+
+    stopPeriodicRefresh() {
+        if (!this.refreshInterval) {
+            return;
+        }
+
+        clearInterval(this.refreshInterval);
+    }
+
     render() {
         let loader;
 
@@ -41,7 +73,9 @@ const mapStateToProps = state => ({
     heroLoad:state.hero.loading,
     leaderboardLoad:state.leaderboard.loading,
     statsLoad:state.stats.loading,
-    superpowerLoad:state.superpowers.loading
+    superpowerLoad:state.superpowers.loading,
+    hasAuthToken: state.auth.authToken !== null,
+    loggedIn: state.auth.currentUser !== null
 });
 
 export default withRouter(connect(mapStateToProps)(App));

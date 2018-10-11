@@ -12,7 +12,6 @@ export class LeaderboardPage extends React.Component{
 		this.props.dispatch(getLeaderboard());
     }
 	render(){
-		console.log("here are the scores ",this.props.scores);
 		let scoreData = [];
 		let error;
 		if (this.props.error) {

@@ -25,7 +25,6 @@ const initialState = {
 
 export default function reducer(state = initialState,action){
 	if(action.type === INITIALIZE_PAGE){
-		//console.log("hero reducer called",state);
 		return Object.assign({}, state, {
 			currentPower:{
 			availablePoints: "100",
@@ -33,11 +32,10 @@ export default function reducer(state = initialState,action){
 			powerDefence:"0",
 			powerSpecialAttack:"0",
 		}
-        })
+        });
 	}
 
 	else if(action.type === GET_POWERS_REQUEST){
-		console.log("get powers request");
 		return Object.assign({}, state, {
             loading: true,
             error:null
@@ -45,13 +43,10 @@ export default function reducer(state = initialState,action){
 	}
 
 	else if(action.type === GET_POWERS_SUCCESS){
-		console.log("action powers", action.powers);
 		let powerNamesArr = [];
 		for(let i =0;i < action.powers.length;i++){
-			//console.log("reducer for loop",action.powers[i].powerName);
 			powerNamesArr.push(action.powers[i].powerName);
 		}
-		//console.log("powers name arr in action",powerNamesArr);
 		return Object.assign({}, state, {
 			loading:false,
             powers: action.powers,
@@ -60,7 +55,6 @@ export default function reducer(state = initialState,action){
         });
 	}
 	else if(action.type === GET_POWERS_ERROR){
-		console.log("super power error");
 		return Object.assign({}, state, {
 			loading:false,
             error: action.error
@@ -69,7 +63,6 @@ export default function reducer(state = initialState,action){
 
 	else if(action.type === UPDATE_POINTS){
 		let newPowerStats = Object.assign({},state.currentPower);
-		//console.log("state in reducer",state,newHeroStats);
 		
 		let sum = 0;
 		for (let key in newPowerStats){
@@ -91,10 +84,8 @@ export default function reducer(state = initialState,action){
 		else if (newAvailablePoints > 100){
 			newAvailablePoints = 100;
 		}
-		//else if()
 		newPowerStats.availablePoints = newAvailablePoints;
 		newPowerStats[action.currentStat] = action.currentVal;
-		//console.log("new hero stats from reducer", newHeroStats);
 		return Object.assign({}, state, {
 			currentPower:newPowerStats
         });
