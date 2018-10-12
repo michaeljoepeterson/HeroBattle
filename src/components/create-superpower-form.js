@@ -41,7 +41,7 @@ export class CreatePowerForm extends React.Component{
 		let success;
 		if (this.props.success) {
 	            success = (
-	                <div className="form-error" aria-live="polite">
+	                <div className="form-error formSuccess" aria-live="polite">
 	                    Superpower Created!
 	                </div>
 	            );
@@ -49,7 +49,7 @@ export class CreatePowerForm extends React.Component{
 		let error;
 			if (this.props.error) {
 	            error = (
-	                <div className="form-error" aria-live="polite">
+	                <div className="form-error formError" aria-live="polite">
 	                    {this.props.error}
 	                </div>
 	            );

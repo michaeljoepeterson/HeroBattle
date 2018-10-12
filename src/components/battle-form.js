@@ -5,6 +5,7 @@ import {required,nonEmpty} from '../validator';
 import Select from './select';
 import {getHero,setBattleHero} from "../actions/hero";
 import {getOpponent,startBattle} from "../actions/battle";
+import {Link} from 'react-router-dom';
 import "./battleFormStyles.css";
 import './card.css';
 export class StartBattleForm extends React.Component{
@@ -125,11 +126,13 @@ export class StartBattleForm extends React.Component{
 			heroesData = [];
 		}
 		let createHeroMessage;
+		let createLink;
 		try{
 			if(this.props.heroes.length === 0){
 				createHeroMessage = (
-					<p>Looks like you don't have any hereos, try creating some!</p>
+					<p className="formSuccess">Looks like you don't have any hereos, try creating some!</p>
 				)
+				createLink = (<Link to="/createhero">Create Hero</Link>)
 			}
 		}
 		catch(err){
@@ -152,6 +155,7 @@ export class StartBattleForm extends React.Component{
 				<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 				{error}
 				{createHeroMessage}
+				{createLink}
 				<p className="pageInfo">Here you can battle another random hero created by another user. Click the find opponent button select a hero and then battle! If you want to play against someone else you can find another opponent.</p>
 				<div className="centerButton">
 					<button className="battleButton" onClick={(e) => this.findOpponent(e)}>
@@ -173,7 +177,7 @@ export class StartBattleForm extends React.Component{
 					validate={[required,nonEmpty]}/>
 					
 					{heroCard}
-					<h3>VS</h3>
+					<h3 className="vsText">VS</h3>
 					{opponentCard}
 					{createdBy}
 					

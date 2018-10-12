@@ -19,16 +19,16 @@ export class ResultsForm extends React.Component{
         let winnerOpponent;
         try{
             if(this.props.results.hero1Wins > this.props.results.hero2Wins){
-                winner = (<p className="winText">Winner!</p>
+                winner = (<p className="winStyle">Winner!</p>
                 );
-                winText = (<p className="pageInfo">{this.props.battleHero.heroName} won!</p>);
+                winText = (<p className="pageInfo winStyle">{this.props.battleHero.heroName} won!</p>);
                 winnerOpponent = null;
 
             }
             else if(this.props.results.hero1Wins < this.props.results.hero2Wins){
                 winnerOpponent = (<p className="winText">Winner!</p>
                 );
-                winText = (<p className="pageInfo">{this.props.opponent.heroOpponent.heroName} won!</p>);
+                winText = (<p className="pageInfo winStyle">{this.props.opponent.heroOpponent.heroName} won!</p>);
                 winner = null;
             }
             else{
@@ -46,7 +46,7 @@ export class ResultsForm extends React.Component{
                 <p className="pageInfo"> {this.props.battleHero.heroName} created by {this.props.username} vs {this.props.opponent.heroOpponent.heroName} created by {this.props.opponent.opponent.username}</p>
                 {winText}
                 <div className="responsiveTable">
-                <table className="defaultTable">
+                <table className="defaultTable centerTable">
                     <tbody>
                     <tr>
                         <th>Hero</th>
@@ -155,14 +155,12 @@ export class ResultsForm extends React.Component{
 		return(
             <div>
             {resultData}
-            {winner}
             {heroCard}
-            <h3>VS</h3>
-            {winnerOpponent}
+            <h3 className="vsText">VS</h3>
             {opponentCard}
             {createdBy}
             <form>
-                <button onClick={(e)=>this.findMatch(e)}>
+                <button className="buttonDefault" onClick={(e)=>this.findMatch(e)}>
                     New Battle
                 </button>
             </form>

@@ -5,10 +5,20 @@
 	text-align:center;
 }
 .battleButton{
+	padding: 5px;
 	margin-top: 5px;
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 10px;
+	width: 30%;
+	border:1px solid black;
+}
+
+.battleButton:hover{
+	cursor: pointer;
+	background-color: black;
+	color:white;
+	border-color: white;
 }
 
 .selectHero{
@@ -17,4 +27,14 @@
 
 .winText{
 	font-weight: bold;
+}
+
+@media (min-width: 501px){
+
+	.vsText{
+        display: inline-block;
+	}
+	.battleButton{
+		width: 20%;
+	}
 }

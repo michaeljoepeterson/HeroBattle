@@ -10,7 +10,21 @@
 	margin-top: 80px;
 	margin-bottom: 50px;
 	padding: 10px;
-	background: linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.7))
+	background: linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.7));
+}
+
+.boxSmall{
+	border: 1px solid black;
+	width: 70%;	
+	margin-top: 80px;
+	margin-bottom: 50px;
+	padding: 10px;
+	background: linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.7));
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle;
+
 }
 
 .link{
@@ -19,6 +33,15 @@
 .buttonDefault{
 	padding: 5px;
 	margin: 5px;
+	width: 30%;
+	border:1px solid black;
+}
+
+.buttonDefault:hover{
+	cursor: pointer;
+	background-color: black;
+	color:white;
+	border-color: white;
 }
 .form-error{
 	font-weight: bold;
@@ -35,4 +58,34 @@
 }
 .pageInfo{
 	font-family: 'Russo One', sans-serif;
+}
+
+.formSuccess{
+	color: green;
+	font-size: 25px;
+}
+
+.formError{
+	color: red;
+	font-size: 25px;
+}
+
+@media (min-width: 501px){
+
+	.buttonDefault{
+		width: 20%;
+	}
+}
+
+@media (min-width: 905px){
+
+	.boxSmall{
+		display: inline-block;
+		width:20%;
+		height: 160px;
+		margin-left: 10px;
+	}
+	.largeCenter{
+		text-align: center;
+	}
 }

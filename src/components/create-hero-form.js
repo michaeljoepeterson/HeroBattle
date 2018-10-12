@@ -7,6 +7,7 @@ import Select from './select';
 import {initPage,updatePointsAction,createHero,updateImage,updateName,updatePower} from "../actions/hero";
 import {getPowers} from '../actions/superpowers';
 import './card.css';
+import './float-grid.css';
 export class CreateHeroForm extends React.Component{
 
 	componentDidMount() {
@@ -82,7 +83,7 @@ export class CreateHeroForm extends React.Component{
 		let success;
 		if (this.props.success === "success") {
 	            success = (
-	                <div className="form-error" aria-live="polite">
+	                <div className="form-error formSuccess" aria-live="polite">
 	                    Hero Created!
 	                </div>
 	            );
@@ -90,7 +91,7 @@ export class CreateHeroForm extends React.Component{
 		let error;
 			if (this.props.error) {
 	            error = (
-	                <div className="form-error" aria-live="polite">
+	                <div className="form-error formError" aria-live="polite">
 	                    {this.props.error}
 	                </div>
 	            );
@@ -124,6 +125,8 @@ export class CreateHeroForm extends React.Component{
 				<p className="pageInfo">Create your own hero here! Create anybody you want, be creative! Each of the stats affects a different aspect of the character and how effective that character is with different super abilities. Try and find the best combination of stats and super powers!</p>
 				{error}
 				{success}
+				<div className="row">
+				<div className="col-6">
 				<label className="labelDefault"htmlFor="heroName">Hero Name:</label>
 				<Field
 					component={Input}
@@ -235,7 +238,9 @@ export class CreateHeroForm extends React.Component{
 					onChange={this.selectImage.bind(this)}>
 					
 				</Field>
-				<div className="center card">
+				</div>
+				<div className="col-6">
+				<div className="center cardCreate">
 				<div className="cardHeader">
 				<h4><b>{this.props.cardName}</b></h4>
 				</div>
@@ -253,6 +258,8 @@ export class CreateHeroForm extends React.Component{
 				    <p>Power2:{this.props.cardPowers.power2}</p>
 				    <p>Power3:{this.props.cardPowers.power3}</p>
 				  </div>
+				</div>
+				</div>
 				</div>
 				<button
 				className="buttonDefault"

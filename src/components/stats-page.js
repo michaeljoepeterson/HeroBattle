@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import Navbar from './navComponent';
 import {getStats,initPage} from "../actions/stats";
+import {Link} from 'react-router-dom';
 import "./responsive-table.css";
 import "./center.css";
 
@@ -18,6 +19,8 @@ export class StatsPage extends React.Component{
 		let totalStats;
 		let statsTable;
 		let error;
+		let battleMessage;
+		let battleLink;
 			if (this.props.error) {
 	            error = (
 	                <div className="form-error" aria-live="polite">
@@ -26,7 +29,15 @@ export class StatsPage extends React.Component{
 	            );
 	        }
 		try{
-			if(this.props.stats){
+
+			if(this.props.stats.matches === 0){
+				battleMessage = (
+					<p className="formSuccess">Looks like you don't have any matches, try battling someone!</p>
+				)
+				battleLink = (<Link to="/battle">Battle!</Link>)
+			}
+
+			else if(this.props.stats){
 				totalStats = (
 					<div className="pageInfo">
 					<p>Wins:{this.props.wins}</p>
@@ -53,16 +64,21 @@ export class StatsPage extends React.Component{
 					</tr>)
 				})
 			}
+
+			
 			
 		}
 		catch(err){
 			totalStats = null;
 		}
+		console.log(this.props.stats);
 		return(
 			<div>
 				<Navbar/>
 				<div className="home box center">
 				<h1 className="pageHeader">Here are your stats {this.props.username}</h1>
+				{battleMessage}
+				{battleLink}
 				{totalStats}
 				{error}
 				<div className="responsiveTable">
