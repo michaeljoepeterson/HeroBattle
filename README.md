@@ -18,7 +18,7 @@ https://gentle-castle-50143.herokuapp.com/
 
 ## Stats Page
 
-![Stats page](screenshots/statsPage.PNG)
+![Stats page](screenshots/statsPAge.PNG)
 
 ## Hero creation Page
 
