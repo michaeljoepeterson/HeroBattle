@@ -29,6 +29,10 @@
 	font-weight: bold;
 }
 
+.vsText{
+	margin:10px;
+}
+
 @media (min-width: 501px){
 
 	.vsText{

@@ -43,7 +43,7 @@ export class StatsPage extends React.Component{
 					<p>Wins:{this.props.wins}</p>
 					<p>Losses:{this.props.matches - this.props.wins}</p>
 					<p>Matches:{this.props.matches}</p>
-					<p>Win Rate:{this.props.winRate}</p>
+					<p>Win Rate:{this.props.winRate}%</p>
 					</div>
 				);
 				let win;

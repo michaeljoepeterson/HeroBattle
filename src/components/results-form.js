@@ -15,29 +15,21 @@ export class ResultsForm extends React.Component{
 
         let resultData;
         let winText;
-        let winner;
-        let winnerOpponent;
         try{
             if(this.props.results.hero1Wins > this.props.results.hero2Wins){
-                winner = (<p className="winStyle">Winner!</p>
-                );
                 winText = (<p className="pageInfo winStyle">{this.props.battleHero.heroName} won!</p>);
-                winnerOpponent = null;
+                
 
             }
             else if(this.props.results.hero1Wins < this.props.results.hero2Wins){
-                winnerOpponent = (<p className="winText">Winner!</p>
-                );
+
                 winText = (<p className="pageInfo winStyle">{this.props.opponent.heroOpponent.heroName} won!</p>);
-                winner = null;
+            
             }
             else{
-                winner = (<p>The battle was a draw!</p>)
-                winnerOpponent = (<p>The battle was a draw!</p>)
             }
         }
         catch(err){
-            winner = null;
         }
         try{
             if(this.props.results){
