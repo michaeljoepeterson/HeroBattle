@@ -25,7 +25,7 @@ export function LandingPage(props){
                 <p className="pageInfo">This app allows you to create a character and battle other player created heroes!</p>
             </div>
             <div className="boxSmall ">
-                <p className="pageInfo">The characters can be anything you want, a hero from a tv series or your neighbour that just won't cut the grass, be creative!</p>
+                <p className="pageInfo">The characters can be anything, a hero from a tv series or your neighbour that just won't cut the grass, be creative!</p>
             </div>
             <div className="boxSmall">
                 <p className="pageInfo">Start by creating a character and assigning them powers created by other user. You can even build your own superpowers!</p>
