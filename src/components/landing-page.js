@@ -18,7 +18,7 @@ export function LandingPage(props){
 	return (
         <div>
         <div className="box center">
-            <h1 className="pageHeader">Welcome to Hero Battle! test</h1>
+            <h1 className="pageHeader">Welcome to Hero Battle!</h1>
         </div>
         <div className="largeCenter">
             <div className="boxSmall">
